@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Module 03 - &#x30a2;&#x30bb;&#x30c3;&#x30c8;&#x306e;&#x691c;&#x7d22;&#x3068;&#x53c2;&#x7167;</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+/* From extension marp-team.marp-vscode */
+#__marp-vscode {
+  all: revert;
+}
+
+/* Override VS Code default CSS rules reverting to initial
+   https://github.com/microsoft/vscode/blob/master/src/vs/workbench/contrib/webview/browser/pre/main.js#L53 */
+body.marp-vscode {
+  padding: 0;
+}
+
+body.marp-vscode img {
+  max-width: unset;
+  max-height: unset;
+}
+
+body.marp-vscode a,
+body.marp-vscode a:hover,
+body.marp-vscode code {
+  color: unset;
+}
+
+body.marp-vscode blockquote {
+  background: unset;
+  border-color: unset;
+}
+
+@media screen {
+  body.marp-vscode {
+    overflow-y: scroll;
+  }
+
+  #__marp-vscode [data-marp-vscode-slide-wrapper] {
+    margin: 20px;
+  }
+
+  #__marp-vscode svg[data-marpit-svg] {
+    box-shadow: 0 5px 10px rgb(0 0 0 / 25%);
+    display: block;
+    margin: 0;
+  }
+
+  /* Based on https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+  #code-csp-warning {
+    background-color: #444;
+    box-shadow: 1px 1px 1px rgb(0 0 0 / 25%);
+    color: white;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 12px;
+    line-height: 22px;
+    margin: 16px;
+    padding: 6px;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 0;
+    word-wrap: break-word;
+  }
+
+  #code-csp-warning:hover {
+    text-decoration: none;
+    background-color: #007acc;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 25%);
+  }
+}
+
+@media print {
+  body.marp-vscode #code-csp-warning {
+    display: none;
+  }
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="module-03---アセットの検索と参照">Module 03 - アセットの検索と参照</h1>
+<h2 id="はじめに">はじめに</h2>
+<h3 id="-導入">📢 導入</h3>
+<p>ソースが登録されスキャンされると、データカタログに実際のオブジェクト（Azure SQL Database のテーブルや Power BI のレポートなど）を表すアセットが追加されます。</p>
+<p>このモジュールでは、テーブルやカラムなどのデータ属性に定義や分類を追加して、テクニカル メタデータを編集する方法やアセットの属性を担当者にリンクさせることで所有者を割り当てる方法、分類を使用してデータをマークする方法を学びます。</p>
+<h3 id="-前提条件">🤔 前提条件</h3>
+<ul>
+<li>アクティブなサブスクリプションを持つAzureアカウント</li>
+<li>Microsoft Purview アカウント (<a href="module01.html">Module 01</a> を参照)</li>
+<li>Microsoft Purview カタログといくつかのアセット（<a href="module02a.html">Module 02a</a> <a href="module02b.html">Module 02b</a> を参照）</li>
+</ul>
+<h3 id="-ゴール">🎯 ゴール</h3>
+<ul>
+<li>キーワードでカタログを検索する</li>
+<li>カタログをソース別に閲覧する</li>
+<li>登録済みのアセットを更新する</li>
+<li>アセットの一括編集を行う</li>
+</ul>
+<h2 id="カタログの検索">カタログの検索</h2>
+<ol>
+<li>
+<p>Purview ガバナンス ポータル を開き**[データカタログ]**画面からアスタリスク<code>*</code>を検索バーに入力し++enter++を押します。</p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-13-44-05.png" alt=""></p>
+</li>
+<li>
+<p>**[分類]<strong>で検索結果を</strong>[Country/Region]**でフィルターしアセット名<code>QueriesByState</code>をクリックして詳細を表示します。</p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-13-47-24.png" alt=""></p>
+<p>!!! Note
+Purview ガバナンス ポータルは既定のユーザーエクスペリエンスとして提供されていますが、顧客やパートナーはMicrosoft Purview REST APIを使用して基盤となるプラットフォームとインターフェースできます。プラットフォームがオープンであるため、Microsoft Purviewとカスタムユーザーインターフェースを統合したり、プログラムで読み取り/書き込み操作を実行したりすることが可能です。</p>
+</li>
+</ol>
+<h2 id="アセットの更新">アセットの更新</h2>
+<ol>
+<li>
+<p>**[編集]**をクリックしてアセットの詳細を変更します。</p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-13-49-01.png" alt=""></p>
+</li>
+<li>
+<p>以下のサンプルテキストを**[資産の説明]**に貼り付けます。</p>
+<pre><code>This dataset was curated from the Bing search logs (desktop users only) over the period of Jan 1st, 2020 – (Current Month - 1). Only searches that were issued many times by multiple users were included. The dataset includes queries from all over the world that had an intent related to the Coronavirus or Covid-19. In some cases this intent is explicit in the query itself (e.g., “Coronavirus updates Seattle”), in other cases it is implicit , e.g. “Shelter in place”
+</code></pre>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-13-50-43.png" alt=""></p>
+</li>
+<li>
+<p>ドロップダウン メニューから**[分類]**に<code>World Cities</code>を割り当てます。</p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-13-59-32.png" alt=""></p>
+</li>
+<li>
+<p>**[スキーマ]<strong>タブに移動しサンプルテキストで各列の</strong>[資産の説明]**を更新します。</p>
+<ul>
+<li>Date:
+<code>      Date on which the query was issued.      </code></li>
+<li>Query
+<code>      The actual search query issued by user(s).      </code></li>
+<li>IsImplicitIntent
+<code>      True if query did not mention covid or coronavirus or sarsncov2 (e.g, “Shelter in place”). False otherwise.      </code></li>
+<li>State
+<code>      State from where the query was issued.      </code></li>
+<li>Country
+<code>      Country from where the query was issued.      </code></li>
+<li>PopularityScore
+<code>      Value between 1 and 100 inclusive. 1 indicates least popular query on the day/State/Country with Coronavirus intent, and 100 indicates the most popular query for the same geography on the same day.      </code></li>
+</ul>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-01-26.png" alt=""></p>
+</li>
+<li>
+<p>**[連絡先]<strong>タブに移動し、組織内のユーザを</strong>[エキスパート]<strong>と</strong>[所有者]<strong>に設定し</strong>[保存]**クリックします。</p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-03-27.png" alt=""></p>
+<p>!!! Note
+アセットは、次の 2 種類の連絡先に関連付けることができます。<br>
+- エキスパート: 多くの場合、ビジネスプロセスまたは対象分野の専門家です。<br>
+- 所有者: 多くの場合、特定のデータ領域に対するガバナンスまたはビジネス プロセスを定義する上級管理職またはビジネス領域の所有者です。<br>
+連絡先としてタグ付けされているアセットの場合、これらはホーム画面(データカタログ)の**[マイ アイテム]**の下に表示されます。</p>
+</li>
+<li>
+<p>同じパス内の他のアセットを表示するには**[関連]**タブに移動します。</p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-04-22.png" alt=""></p>
+</li>
+</ol>
+<h2 id="アセットの参照">アセットの参照</h2>
+<p>検索エクスペリエンスはキーワード ベースの検出に最適ですが、Microsoft Purview ガバナンス ポータルでは、資産を参照する別の方法 (コレクション別またはソースの種類別) を使用できます。</p>
+<ol>
+<li>
+<p>**[データ カタログ]<strong>画面から</strong>[参照]**をクリックします。</p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-10-25.png" alt=""></p>
+</li>
+<li>
+<p>**[ソースの種類別]**タブに切り替えて<code>Azure Data Lake Storage Gen2</code>を選択します。</p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-10-53.png" alt=""></p>
+</li>
+<li>
+<p>アカウント<code>pvlab{randomId}adls</code>を選択します。</p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-11-12.png" alt=""></p>
+</li>
+<li>
+<p>コンテナー<code>raw</code>を選択します。</p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-11-33.png" alt=""></p>
+</li>
+</ol>
+<h2 id="一括編集">一括編集</h2>
+<p>Microsoft Purview を使用すると、属性のサブセット (エキスパート、所有者、用語、分類) に対して特定の操作 (追加/置換/削除) を Microsoft Purview ガバナンス ポータル内で直接一括で実行できます。</p>
+<ol>
+<li>
+<p>**[データカタログ]**画面からアスタリスク<code>*</code>を検索バーに入力し++enter++を押します。</p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-21-25.png" alt=""></p>
+</li>
+<li>
+<p>フィルター内の資産の種類から**[データ]**を選択します。</p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-22-41.png" alt=""></p>
+ <!--
+ <img src="http://127.0.0.1:8000/images/module03/2024-01-10-14-22-41.png" width="60%" />
+ -->
+</li>
+<li>
+<p>**[ファイル]<strong>と</strong>[表]<strong>でフィルターをして次の5つの項目を選択し</strong>[選択項目の表示]**をクリックします。</p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-25-38.png" alt=""></p>
+<ul>
+<li>QueriesByState</li>
+<li>Address</li>
+<li>Customer</li>
+<li>QueriesByCountry</li>
+<li>CustomerAddress</li>
+</ul>
+</li>
+<li>
+<p>**[一括編集]**をクリックします。</p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-15-07-04.png" alt=""></p>
+</li>
+<li>
+<p>**[属性]<strong>を</strong>[所有者]<strong>に、</strong>[操作]<strong>を</strong>[追加]<strong>に設定し組織内の1人以上のユーザを選択して</strong>[適用]**をクリックします。</p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-15-07-37.png" alt=""></p>
+</li>
+<li>
+<p>**[すべての選択を解除して閉じる]**をクリックします。</p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-15-08-10.png" alt=""></p>
+</li>
+</ol>
+
+        
+        <script async type="text/javascript">
+/* From extension marp-team.marp-vscode */
+(()=>{var U=Object.defineProperty;var d=($,E)=>U($,"name",{value:E,configurable:!0});(()=>{var $={676:(w,b,g)=>{w.exports=g(185)},185:(w,b)=>{"use strict";var g;g={value:!0};const x={h1:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:()=>HTMLSpanElement},pre:{proto:()=>HTMLElement,style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},k="data-marp-auto-scaling-wrapper",u="data-marp-auto-scaling-svg",c="data-marp-auto-scaling-container",T=class T extends HTMLElement{constructor(){super(),this.svgPreserveAspectRatio="xMinYMid meet";const s=d(i=>([n])=>{const{width:e,height:t}=n.contentRect;this[i]={width:e,height:t},this.updateSVGRect()},"t");this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(s("containerSize")),this.wrapperObserver=new ResizeObserver((...i)=>{s("wrapperSize")(...i),this.flushSvgDisplay()})}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){var s,i,n,e,t;this.shadowRoot.innerHTML=`
+<style>
+  svg[${u}] { display: block; width: 100%; height: auto; vertical-align: top; }
+  span[${c}] { display: table; white-space: var(--marp-auto-scaling-white-space, nowrap); width: max-content; }
+</style>
+<div ${k}>
+  <svg part="svg" ${u}>
+    <foreignObject><span ${c}><slot></slot></span></foreignObject>
+  </svg>
+</div>
+    `.split(/\n\s*/).join(""),this.wrapper=(s=this.shadowRoot.querySelector(`div[${k}]`))!==null&&s!==void 0?s:void 0;const o=this.svg;this.svg=(n=(i=this.wrapper)===null||i===void 0?void 0:i.querySelector(`svg[${u}]`))!==null&&n!==void 0?n:void 0,this.svg!==o&&(this.svgComputedStyle=this.svg?window.getComputedStyle(this.svg):void 0),this.container=(t=(e=this.svg)===null||e===void 0?void 0:e.querySelector(`span[${c}]`))!==null&&t!==void 0?t:void 0,this.observe()}disconnectedCallback(){this.svg=void 0,this.svgComputedStyle=void 0,this.wrapper=void 0,this.container=void 0,this.observe()}attributeChangedCallback(){this.observe()}flushSvgDisplay(){const{svg:s}=this;s&&(s.style.display="inline",requestAnimationFrame(()=>{s.style.display=""}))}observe(){this.containerObserver.disconnect(),this.wrapperObserver.disconnect(),this.wrapper&&this.wrapperObserver.observe(this.wrapper),this.container&&this.containerObserver.observe(this.container),this.svgComputedStyle&&this.observeSVGStyle(this.svgComputedStyle)}observeSVGStyle(s){const i=d(()=>{const n=(()=>{const e=s.getPropertyValue("--preserve-aspect-ratio");return e?e.trim():`x${(({textAlign:t,direction:o})=>{if(t.endsWith("left"))return"Min";if(t.endsWith("right"))return"Max";if(t==="start"||t==="end"){let a=o==="rtl";return t==="end"&&(a=!a),a?"Max":"Min"}return"Mid"})(s)}YMid meet`})();n!==this.svgPreserveAspectRatio&&(this.svgPreserveAspectRatio=n,this.updateSVGRect()),s===this.svgComputedStyle&&requestAnimationFrame(i)},"e");i()}updateSVGRect(){var s,i,n,e,t,o,a;let p=Math.ceil((i=(s=this.containerSize)===null||s===void 0?void 0:s.width)!==null&&i!==void 0?i:0);const h=Math.ceil((e=(n=this.containerSize)===null||n===void 0?void 0:n.height)!==null&&e!==void 0?e:0);this.dataset.downscaleOnly!==void 0&&(p=Math.max(p,(o=(t=this.wrapperSize)===null||t===void 0?void 0:t.width)!==null&&o!==void 0?o:0));const f=(a=this.svg)===null||a===void 0?void 0:a.querySelector(":scope > foreignObject");if(f?.setAttribute("width",`${p}`),f?.setAttribute("height",`${h}`),this.svg&&(this.svg.setAttribute("viewBox",`0 0 ${p} ${h}`),this.svg.setAttribute("preserveAspectRatio",this.svgPreserveAspectRatio),this.svg.style.height=p<=0||h<=0?"0":""),this.container){const _=this.svgPreserveAspectRatio.toLowerCase();this.container.style.marginLeft=_.startsWith("xmid")||_.startsWith("xmax")?"auto":"0",this.container.style.marginRight=_.startsWith("xmi")?"auto":"0"}}};d(T,"s");let r=T;const m=d((l,{attrs:s={},style:i})=>class extends l{constructor(...n){super(...n);for(const[e,t]of Object.entries(s))this.hasAttribute(e)||this.setAttribute(e,t);this.attachShadow({mode:"open"})}static get observedAttributes(){return["data-auto-scaling"]}connectedCallback(){this._update()}attributeChangedCallback(){this._update()}_update(){const n=i?`<style>:host { ${i} }</style>`:"";let e="<slot></slot>";const{autoScaling:t}=this.dataset;t!==void 0&&(e=`<marp-auto-scaling exportparts="svg:auto-scaling" ${t==="downscale-only"?"data-downscale-only":""}>${e}</marp-auto-scaling>`),this.shadowRoot.innerHTML=n+e}},"o");let v;const j=Symbol();let C;const z="marpitSVGPolyfill:setZoomFactor,",A=Symbol(),D=Symbol(),W=d(()=>{const l=navigator.vendor==="Apple Computer, Inc.",s=l?[B]:[],i={then:n=>(l?(async()=>{if(C===void 0){const e=document.createElement("canvas");e.width=10,e.height=10;const t=e.getContext("2d"),o=new Image(10,10),a=new Promise(p=>{o.addEventListener("load",()=>p())});o.crossOrigin="anonymous",o.src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%2210%22%20viewBox%3D%220%200%201%201%22%3E%3CforeignObject%20width%3D%221%22%20height%3D%221%22%20requiredExtensions%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%3Cdiv%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%20style%3D%22width%3A%201px%3B%20height%3A%201px%3B%20background%3A%20red%3B%20position%3A%20relative%22%3E%3C%2Fdiv%3E%3C%2FforeignObject%3E%3C%2Fsvg%3E",await a,t.drawImage(o,0,0),C=t.getImageData(5,5,1,1).data[3]<128}return C})().then(e=>{n?.(e?[B]:[])}):n?.([]),i)};return Object.assign(s,i)},"h");let H,O;function B(l){const s=typeof l=="object"&&l.target||document,i=typeof l=="object"?l.zoom:l;window[D]||(Object.defineProperty(window,D,{configurable:!0,value:!0}),document.body.style.zoom=1.0001,document.body.offsetHeight,document.body.style.zoom=1,window.addEventListener("message",({data:e,origin:t})=>{if(t===window.origin)try{if(e&&typeof e=="string"&&e.startsWith(z)){const[,o]=e.split(","),a=Number.parseFloat(o);Number.isNaN(a)||(O=a)}}catch(o){console.error(o)}}));let n=!1;Array.from(s.querySelectorAll("svg[data-marpit-svg]"),e=>{var t,o,a,p;e.style.transform||(e.style.transform="translateZ(0)");const h=i||O||e.currentScale||1;H!==h&&(H=h,n=h);const f=e.getBoundingClientRect(),{length:_}=e.children;for(let F=0;F<_;F+=1){const S=e.children[F];if(S.getScreenCTM){const y=S.getScreenCTM();if(y){const I=(o=(t=S.x)===null||t===void 0?void 0:t.baseVal.value)!==null&&o!==void 0?o:0,Z=(p=(a=S.y)===null||a===void 0?void 0:a.baseVal.value)!==null&&p!==void 0?p:0,Y=S.children.length;for(let R=0;R<Y;R+=1){const N=S.children[R];if(N.tagName==="SECTION"){const{style:q}=N;q.transformOrigin||(q.transformOrigin=`${-I}px ${-Z}px`),q.transform=`scale(${h}) matrix(${y.a}, ${y.b}, ${y.c}, ${y.d}, ${y.e-f.left}, ${y.f-f.top}) translateZ(0.0001px)`;break}}}}}}),n!==!1&&Array.from(s.querySelectorAll("iframe"),({contentWindow:e})=>{e?.postMessage(`${z}${n}`,window.origin==="null"?"*":window.origin)})}d(B,"u");function P({once:l=!1,target:s=document}={}){const i=function(n=document){if(n[A])return n[A];let e=!0;const t=d(()=>{e=!1,delete n[A]},"i");Object.defineProperty(n,A,{configurable:!0,value:t});let o=[],a=!1;(async()=>{try{o=await W()}finally{a=!0}})();const p=d(()=>{for(const h of o)h({target:n});a&&o.length===0||e&&window.requestAnimationFrame(p)},"o");return p(),t}(s);return l?(i(),()=>{}):i}d(P,"v"),H=1,O=void 0;const G=P,M=Symbol(),L=d((l=document)=>{if(typeof window>"u")throw new Error("Marp Core's browser script is valid only in browser context.");if(((e=document)=>{const t=window[j];t||customElements.define("marp-auto-scaling",r);for(const o of Object.keys(x)){const a=`marp-${o}`,p=x[o].proto();v!=null||(v=!!document.createElement("div",{is:"marp-auto-scaling"}).outerHTML.startsWith("<div is")),v&&p!==HTMLElement?t||customElements.define(a,m(p,{style:x[o].style}),{extends:o}):(t||customElements.define(a,m(HTMLElement,x[o])),e.querySelectorAll(`${o}[is="${a}"]`).forEach(h=>{h.outerHTML=h.outerHTML.replace(new RegExp(`^<${o}`,"i"),`<${a}`).replace(new RegExp(`</${o}>$`,"i"),`</${a}>`)}))}window[j]=!0})(l),l[M])return l[M];const s=P({target:l}),i=d(()=>{s(),delete l[M]},"n"),n=Object.assign(i,{cleanup:i,update:()=>L(l)});return Object.defineProperty(l,M,{configurable:!0,value:n}),n},"y");b.browser=L,g=L,g=G}},E={};function V(w){var b=E[w];if(b!==void 0)return b.exports;var g=E[w]={exports:{}};return $[w](g,g.exports,V),g.exports}d(V,"__webpack_require__");var J={};(()=>{"use strict";var w=V(676);function b(){let u,c;const r=d(()=>{const m=document.getElementById("__marp-vscode"),v=!!m;u!==v?(document.body.classList.toggle("marp-vscode",v),v?c=(0,w.browser)():(c?.cleanup(),c=void 0),u=v):v&&c?.update(),u?(m&&g(m),x()):k()},"updateCallback");window.addEventListener("load",()=>window.setTimeout(r,100)),window.addEventListener("vscode.markdown.updateContent",r),r()}d(b,"preview");const g=d(u=>{u.querySelectorAll("[is]").forEach(c=>{if(c.nodeName.includes("-")||document.createElement(c.nodeName).constructor!==c.constructor)return;const{outerHTML:m}=c;c.outerHTML=m,console.debug("[marp-vscode] Custom element has been upgraded forcibly:",m.slice(0,m.indexOf(">")+1||void 0))})},"forceUpgradeCustomElements"),x=d(()=>{const u=document.querySelectorAll("style:not(#__marp-vscode-style,#_defaultStyles,[data-marp-vscode-body])"),c=document.querySelectorAll('link[rel="stylesheet"][href]:not([href*="marp-vscode"])');u.forEach(r=>{r.closest("#__marp-vscode")||(r.dataset.marpVscodeBody=r.textContent??"",r.textContent="")}),c.forEach(r=>{if(r.closest("#__marp-vscode"))return;const{href:m}=r;r.dataset.marpVscodeHref=m,r.removeAttribute("href")})},"removeStyles"),k=d(()=>{const u=document.querySelectorAll("style[data-marp-vscode-body]"),c=document.querySelectorAll("link[data-marp-vscode-href]");u.forEach(r=>{r.textContent=r.dataset.marpVscodeBody||"",delete r.dataset.marpVscodeBody}),c.forEach(r=>{r.href=r.dataset.marpVscodeHref||"",delete r.dataset.marpVscodeHref})},"restoreStyles");b()})()})();})();
+
+</script>
+
+    </body>
+    </html>

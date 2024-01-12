@@ -1,0 +1,958 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../module06/">
+      
+      
+        <link rel="next" href="../module08/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
+    
+    
+      
+        <title>07. データ資産の分析情報 - Microsoft Purview Workshop JP</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans JP";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-DHNW06J3T4"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-DHNW06J3T4",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-DHNW06J3T4",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-07-" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Microsoft Purview Workshop JP" class="md-header__button md-logo" aria-label="Microsoft Purview Workshop JP" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Microsoft Purview Workshop JP
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              07. データ資産の分析情報
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_3" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Microsoft Purview Workshop JP" class="md-nav__button md-logo" aria-label="Microsoft Purview Workshop JP" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Microsoft Purview Workshop JP
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Learning Modules
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Learning Modules
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module00/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00. 環境のセットアップ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01. Purview Accountの作成
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module02a/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02A. データ資産の登録とスキャン (Azure Data Lake Storage Gen2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module02b/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02B. データ資産の登録とスキャン (Azure SQL Database)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03. アセットの検索と参照
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04. 用語集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05. 分類
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06. データ系列の可視化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    07. データ資産の分析情報
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    07. データ資産の分析情報
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+    <nav class="md-nav" aria-label="はじめに">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    📢 導入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    🤔 前提条件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    🎯 ゴール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    データ スチュワードシップ インサイト
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    アセットから見た分析情報
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    用語集から見た分析情報
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    分類結果から見た分析情報
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    秘密度ラベルから見た分析情報
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08. Azure Synapse Analyticsとの統合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+    <nav class="md-nav" aria-label="はじめに">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    📢 導入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    🤔 前提条件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    🎯 ゴール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    データ スチュワードシップ インサイト
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    アセットから見た分析情報
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    用語集から見た分析情報
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    分類結果から見た分析情報
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    秘密度ラベルから見た分析情報
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="module-07-">Module 07 - データ資産の分析情報</h1>
+<h2 id="_1">はじめに</h2>
+<h3 id="_2">📢 導入</h3>
+<p>分析情報は、データソース管理者、ビジネスユーザー、データスチュワード、データオフィサー、セキュリティ管理者に特定のインサイトを提供することも目的としています。Microsoft Purviewには現在、以下のレポートがあります。</p>
+<p>正常性</p>
+<ul>
+<li>データスチュワードシップ</li>
+</ul>
+<p>インベントリと所有権</p>
+<ul>
+<li>アセット</li>
+</ul>
+<p>キュレーションとガバナンス</p>
+<ul>
+<li>用語集</li>
+<li>分類</li>
+<li>秘密度ラベル</li>
+</ul>
+<h3 id="_3">🤔 前提条件</h3>
+<ul>
+<li>アクティブなサブスクリプションを持つAzureアカウント</li>
+<li>Microsoft Purview アカウント (<a href="../module01/">Module 01</a> を参照)</li>
+<li>スキャンのセットアップ完了（<a href="../module02a/">Module 02a</a> <a href="../module02b/">Module 02b</a> を参照）</li>
+</ul>
+<h3 id="_4">🎯 ゴール</h3>
+<ul>
+<li>レポートから収集できるさまざまな種類の分析情報を理解する</li>
+</ul>
+<h2 id="_5">データ スチュワードシップ インサイト</h2>
+<ol>
+<li>
+<p>Microsoft Purview ガバナンス ポータル を開きます。
+次に、<strong>[データ資産の分析情報]</strong> &gt; <strong>[データ スチュワードシップ]</strong> をクリックします。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Data Estate Insightsへ情報が反映されるまでスキャン後3～8時間ほど必要になる場合があります。<br />
+<a href="https://docs.microsoft.com/ja-jp/azure/purview/asset-insights#understand-your-asset-inventory-in-data-estate-insights">データに関する Microsoft Purview のアセットの分析情報 - Microsoft Purview | Microsoft Docs</a></p>
+</div>
+<p><img alt="" src="../images/module07/2024-01-12-11-54-20.png" /></p>
+</li>
+<li>
+<p>データ スチュワードシップには、以下のようなメトリクスが表示されます。</p>
+<ul>
+<li>キュレーションステータス別の資産数</li>
+<li>所有状況別の資産数</li>
+<li>月間アクティブユーザー数</li>
+</ul>
+<p><img alt="" src="../images/module07/2024-01-12-11-54-50.png" /></p>
+</li>
+<li>
+<p>データ スチュワードシップには、さらに以下のデータの可視化表現があります。通常、これらのタイルでは、インタラクティブなフィルタリングと、「詳細を表示」をクリックすることで詳細へのドリルダウンが可能になっています。</p>
+<p>データ資産の正常性
+<img alt="" src="../images/module07/2024-01-12-12-05-01.png" /></p>
+<p>資産のキュレーション
+<img alt="" src="../images/module07/2024-01-12-15-52-46.png" /></p>
+<p>傾向とギャップの分析
+<img alt="" src="../images/module07/2024-01-12-15-53-16.png" /></p>
+</li>
+</ol>
+<h2 id="_6">アセットから見た分析情報</h2>
+<ol>
+<li>
+<p>Microsoft Purview ガバナンス ポータル を開きます。
+次に、<strong>[データ資産の分析情報]</strong> &gt; <strong>[アセット]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module07/2024-01-12-12-06-35.png" /></p>
+</li>
+<li>
+<p>アセットには、以下のようなメトリクスが表示されます。</p>
+<ul>
+<li>資産数</li>
+<li>分類別保有資産数</li>
+<li>所有者別資産数</li>
+<li>新規資産数（過去30日間）</li>
+<li>削除資産数（過去30日間）</li>
+</ul>
+<p><img alt="" src="../images/module07/2024-01-12-12-07-41.png" /></p>
+</li>
+<li>
+<p>アセットでは以下のグラフが表示されます。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>[ソースの種類別のデータ資産]</strong> グラフのクイック フィルターを使用し、<strong>[詳細の表示]</strong> をクリックして詳細を掘り下げると、特定の種類のデータを含むソースをすばやく簡単に識別できます (たとえば、 <strong>[分類カテゴリ]</strong> フィルターを Personal に設定します。)</p>
+</div>
+<p>コレクションごとのデータ資産/ソース種類別のデータ資産
+<img alt="" src="../images/module07/2024-01-12-12-08-38.png" /></p>
+<p>ファイルベースのソースの種類
+<img alt="" src="../images/module07/2024-01-12-12-09-33.png" /></p>
+</li>
+</ol>
+<h2 id="_7">用語集から見た分析情報</h2>
+<ol>
+<li>
+<p>Microsoft Purview ガバナンス ポータル を開きます。
+次に、<strong>[データ資産の分析情報]</strong> &gt; <strong>[用語集]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module07/2024-01-12-15-56-10.png" /></p>
+</li>
+<li>
+<p>用語集には、以下のメトリックが含まれます。</p>
+<ul>
+<li>用語の合計</li>
+<li>資産と紐づかない承認済みの用語の合計</li>
+<li>資産と紐づく期限切れの用語の合計</li>
+</ul>
+<p><img alt="" src="../images/module07/2024-01-12-15-56-34.png" /></p>
+</li>
+<li>
+<p>アセットでは以下のグラフが表示されます。</p>
+<p>アセット数ごとの上位条件
+<img alt="" src="../images/module07/2024-01-12-15-56-59.png" /></p>
+<p>用語は、定義、エキスパート、またはスチュワードが欠落している場合、不完全であると見なされます。1 つの用語にこれらの項目が複数欠落している場合は、「複数のアイテムが見つかりません」と表示されます。</p>
+<p><img alt="" src="../images/module07/2024-01-12-15-58-17.png" /></p>
+</li>
+</ol>
+<h2 id="_8">分類結果から見た分析情報</h2>
+<ol>
+<li>
+<p>Microsoft Purview ガバナンス ポータル を開きます。
+次に、<strong>[データ資産の分析情報]</strong> &gt; <strong>[分類]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module07/2024-01-12-15-58-44.png" /></p>
+</li>
+<li>
+<p>分類には、以下のメトリックが含まれます。</p>
+<ul>
+<li>分類された資産の総数</li>
+<li>分類されたファイルの総数</li>
+<li>分類されたテーブルの総数</li>
+<li>一意の分類の総数</li>
+<li>分類されたソースの総数</li>
+</ul>
+<p><img alt="" src="../images/module07/2024-01-12-15-59-18.png" /></p>
+</li>
+<li>
+<p>分類では以下のグラフが表示されます。</p>
+<p>分類されたデータを含む上位のデータ ソース (過去 30 日間)
+<img alt="" src="../images/module07/2024-01-12-15-59-46.png" /></p>
+<p>上位の分類カテゴリ
+<img alt="" src="../images/module07/2024-01-12-16-00-44.png" /></p>
+<p>上位の分類
+<img alt="" src="../images/module07/2024-01-12-16-01-08.png" /></p>
+</li>
+</ol>
+<h2 id="_9">秘密度ラベルから見た分析情報</h2>
+<ol>
+<li>
+<p>Microsoft Purview ガバナンス ポータル を開きます。
+次に、<strong>[データ資産の分析情報]</strong> &gt; <strong>[秘密度ラベル]</strong> をクリックします。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>秘密度ラベルを適用する Microsoft Purview の機能は、Microsoft Purview コンプライアンス ポータル内で制御されます。注: 秘密度ラベルを自動的に適用する利点を提供するアクティブな Microsoft 365 ライセンスが必要です。詳細については、「<a href="https://learn.microsoft.com/ja-jp/purview/how-to-automatically-label-your-content">Microsoft Purview データ マップ内のデータに秘密度ラベルを自動的に適用する方法</a>」を参照してください。</p>
+</div>
+<p><img alt="" src="../images/module07/2024-01-12-16-01-36.png" /></p>
+</li>
+<li>
+<p>秘密度ラベルには、以下のメトリックが含まれます。</p>
+<ul>
+<li>ラベル付き資産の総数</li>
+<li>ラベル付きファイルの総数</li>
+<li>ラベル付きテーブルの総数</li>
+<li>一意のラベルの合計数</li>
+<li>ラベル付きソースの総数</li>
+</ul>
+<p><img alt="" src="../images/module07/2024-01-12-16-01-56.png" /></p>
+</li>
+<li>
+<p>秘密度ラベルでは以下のグラフが表示されます。</p>
+<p>ラベル付きデータを含む上位のデータ ソース (過去 30 日間)
+<img alt="" src="../images/module07/2024-01-12-16-02-19.png" /></p>
+<p>データ ソース全体に適用される上位のラベル
+<img alt="" src="../images/module07/2024-01-12-16-03-01.png" /></p>
+<p>上位のラベル
+<img alt="" src="../images/module07/2024-01-12-16-03-40.png" /></p>
+</li>
+</ol>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.81fa17fe.min.js"></script>
+      
+    
+  </body>
+</html>

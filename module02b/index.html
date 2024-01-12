@@ -1,0 +1,1005 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../module02a/">
+      
+      
+        <link rel="next" href="../module03/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
+    
+    
+      
+        <title>02B. データ資産の登録とスキャン (Azure SQL Database) - Microsoft Purview Workshop JP</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans JP";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-DHNW06J3T4"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-DHNW06J3T4",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-DHNW06J3T4",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-02b-azure-sql-database" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Microsoft Purview Workshop JP" class="md-header__button md-logo" aria-label="Microsoft Purview Workshop JP" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Microsoft Purview Workshop JP
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              02B. データ資産の登録とスキャン (Azure SQL Database)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_3" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Microsoft Purview Workshop JP" class="md-nav__button md-logo" aria-label="Microsoft Purview Workshop JP" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Microsoft Purview Workshop JP
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Learning Modules
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Learning Modules
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module00/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00. 環境のセットアップ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01. Purview Accountの作成
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module02a/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02A. データ資産の登録とスキャン (Azure Data Lake Storage Gen2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    02B. データ資産の登録とスキャン (Azure SQL Database)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    02B. データ資産の登録とスキャン (Azure SQL Database)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+    <nav class="md-nav" aria-label="はじめに">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    📢 導入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    🤔 前提条件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    🎯 ゴール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    アクセスポリシーの設定 #1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    アクセスポリシーの設定 #2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    シークレットの作成
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microsoft-purview" class="md-nav__link">
+    資格情報をMicrosoft Purviewに追加する
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#azure-sql-database" class="md-nav__link">
+    ソースの登録（Azure SQL Database）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    登録した資格情報を利用したスキャン
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    アセットの表示
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03. アセットの検索と参照
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04. 用語集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05. 分類
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06. データ系列の可視化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07. データ資産の分析情報
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08. Azure Synapse Analyticsとの統合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+    <nav class="md-nav" aria-label="はじめに">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    📢 導入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    🤔 前提条件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    🎯 ゴール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    アクセスポリシーの設定 #1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    アクセスポリシーの設定 #2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    シークレットの作成
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#microsoft-purview" class="md-nav__link">
+    資格情報をMicrosoft Purviewに追加する
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#azure-sql-database" class="md-nav__link">
+    ソースの登録（Azure SQL Database）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    登録した資格情報を利用したスキャン
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    アセットの表示
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="module-02b-azure-sql-database">Module 02B - データ資産の登録とスキャン(Azure SQL Database)</h1>
+<h2 id="_1">はじめに</h2>
+<h3 id="_2">📢 導入</h3>
+<p>データを検出し把握するために Microsoft Purview にデータ資産を登録するには、データ資産をソースとして登録してスキャン機能を利用できるようにする必要があります。スキャンにより Microsoft Purview は、完全修飾名、スキーマ、データ型などの技術的なメタデータを抽出し、元になるデータのサンプルを解析して分類を適用できます。このモジュールでは、データ ソースの登録とスキャン方法について説明します。</p>
+<h3 id="_3">🤔 前提条件</h3>
+<ul>
+<li>アクティブなサブスクリプションを持つAzureアカウント</li>
+<li>Azure SQL Database (<a href="../module00/">Module 00</a> を参照)</li>
+<li>Microsoft Purview アカウント (<a href="../module01/">Module 01</a> を参照)</li>
+</ul>
+<h3 id="_4">🎯 ゴール</h3>
+<ul>
+<li>Azure SQL Databaseを登録し、Azure Key Vaultに保存されているSQL認証の資格情報を使用してスキャンを実施する</li>
+</ul>
+<h2 id="1">アクセスポリシーの設定 #1</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Azure Key Vault は、シークレットの安全なストアを提供するクラウド サービスです。Azure Key Vault を使用すると、キー、パスワード、証明書、その他のシークレットを安全に格納できます。詳細については、「<a href="https://learn.microsoft.com/ja-jp/azure/key-vault/general/overview">Azure Key Vault について</a>」を参照してください。</p>
+</div>
+<ol>
+<li>
+<p>Azure Key Vaultリソースに移動し <strong>[アクセス ポリシー]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-05-59.png" /></p>
+</li>
+<li>
+<p><strong>[＋ 作成]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-06-51.png" /></p>
+</li>
+<li>
+<p><strong>[シークレットのアクセス許可]</strong> で <strong>[すべて選択]</strong> を選択し <strong>[次へ]</strong> クリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-07-55.png" /></p>
+</li>
+<li>
+<p>自分の <strong>[アカウント名]</strong> を検索し、検索結果から自分のアカウントを選択し <strong>[確認および作成]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-10-54.png" /></p>
+</li>
+<li>
+<p>選択した内容を確認し <strong>[作成]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-11-42.png" /></p>
+</li>
+</ol>
+<h2 id="2">アクセスポリシーの設定 #2</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>この手順では、キー コンテナーからシークレットを取得するために必要なアクセスを Microsoft Purview に提供する 2 番目のアクセス ポリシーを作成します。</p>
+</div>
+<ol>
+<li>
+<p><strong>[アクセス ポリシー]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-16-10.png" /></p>
+</li>
+<li>
+<p><strong>[＋作成]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-25-37.png" /></p>
+</li>
+<li>
+<p><strong>[シークレットのアクセス許可]</strong> で <strong>[取得]</strong> と <strong>[一覧]</strong> を選択し <strong>[次へ]</strong> クリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-27-16.png" /></p>
+</li>
+<li>
+<p>Microsoft Purviewアカウントの名前（例: <code>pvlab-{randomId}-pv</code>）を検索し、アカウントを選択して <strong>[確認および作成]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-29-24.png" /></p>
+</li>
+<li>
+<p>選択内容を確認し <strong>[作成]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-30-20.png" /></p>
+</li>
+</ol>
+<h2 id="_5">シークレットの作成</h2>
+<ol>
+<li>
+<p><strong>[シークレット]</strong> に移動し <strong>[＋ 生成/インポート]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-32-35.png" /></p>
+</li>
+<li>
+<p><strong>[名前]</strong> と <strong>[値]</strong> に次の値を入力して <strong>[作成]</strong> をクリックします。</p>
+</li>
+<li>
+<p><strong>名前:</strong>
+   <div class="highlight"><pre><span></span><code>sql-secret
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>値:</strong>
+   <div class="highlight"><pre><span></span><code>sqlPassword!
+</code></pre></div></p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-34-45.png" /></p>
+</li>
+</ol>
+<h2 id="microsoft-purview">資格情報をMicrosoft Purviewに追加する</h2>
+<ol>
+<li>
+<p><strong>[Purview ガバナンス ポータル]</strong> から <strong>[管理]</strong> ＞ <strong>[資格情報]</strong> に移動し <strong>[Key Vault接続の管理]</strong> へ移動します。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-36-33.png" /></p>
+</li>
+<li>
+<p><strong>[新規作成]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-37-23.png" /></p>
+</li>
+<li>
+<p>Key Vaultの接続名を<code>myKeyVault</code>と設定、適切なサブスクリプションとKey Vault名を選択して <strong>[作成]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-39-24.png" /></p>
+</li>
+<li>
+<p><strong>[閉じる]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-40-47.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>アクセス権の付与の確認画面が表示された場合は <strong>[確認]</strong> をクリックしてください。</p>
+</div>
+</li>
+<li>
+<p><strong>[資格情報]</strong> で <strong>[＋ 新規]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-43-38.png" /></p>
+</li>
+<li>
+<p>認証方法を<code>SQL 認証</code>に設定しKey Vault接続を<code>myKeyVault</code>に設定します。それぞれのフィールドに以下の値を入力して <strong>[作成]</strong> をクリックします。</p>
+<ul>
+<li><strong>名前:</strong>
+  <div class="highlight"><pre><span></span><code>credential-SQL
+</code></pre></div></li>
+<li><strong>ユーザー名:</strong>
+  <div class="highlight"><pre><span></span><code>sqladmin
+</code></pre></div></li>
+<li><strong>シークレット名:</strong>
+  <div class="highlight"><pre><span></span><code>sql-secret
+</code></pre></div></li>
+</ul>
+<p><img alt="" src="../images/module02b/2023-11-16-18-45-55.png" /></p>
+</li>
+</ol>
+<h2 id="azure-sql-database">ソースの登録（Azure SQL Database）</h2>
+<ol>
+<li>
+<p><strong>[データ マップ]</strong> ＞ <strong>[データ ソース]</strong> に移動し <strong>[登録]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-46-58.png" /></p>
+</li>
+<li>
+<p><strong>[Azure]</strong> タブへ移動し <strong>[Azure SQL Database]</strong> を選択し <strong>[続行]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-48-05.png" /></p>
+</li>
+<li>
+<p><strong>[Azure サブスクリプション]</strong> 、<strong>[サーバー名]</strong>、<strong>[コレクション]</strong> の順に選択し <strong>[登録]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-50-03.png" /></p>
+</li>
+</ol>
+<h2 id="_6">登録した資格情報を利用したスキャン</h2>
+<ol>
+<li>
+<p><strong>[データマップ]</strong> ＞ <strong>[データ ソース]</strong> に移動し <strong>[Azure SQL Database]</strong> タイル内で <strong>[新しいスキャン]</strong> アイコンをクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-56-49.png" /></p>
+</li>
+<li>
+<p><strong>[データベース]</strong> と <strong>[資格情報]</strong> を選択し <strong>[接続のテスト]</strong> をクリックします。接続が成功したら <strong>[続行]</strong> をクリックします。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>ServerlessタイプのSQL Databaseを選択しているため、DB作成から時間が経過しているとDBが停止しており、テストに失敗する場合があります。その場合は、再度接続テストをお試しください。</p>
+</div>
+<p><img alt="" src="../images/module02b/2023-11-16-18-58-37.png" /></p>
+</li>
+<li>
+<p><strong>[続行]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-18-59-29.png" /></p>
+</li>
+<li>
+<p><strong>[続行]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-19-00-10.png" /></p>
+</li>
+<li>
+<p><strong>[一度だけ]</strong> を選択し <strong>[続行]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-19-00-54.png" /></p>
+</li>
+<li>
+<p><strong>[保存して実行]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-19-01-33.png" /></p>
+</li>
+<li>
+<p>スキャンの進行状況を監視するには <strong>[詳細の表示]</strong> をクリックします。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-19-02-07.png" /></p>
+</li>
+<li>
+<p><strong>[最新の情報に更新]</strong> をクリックしてスキャンの状態を定期的に更新します。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-19-03-30.png" /></p>
+</li>
+</ol>
+<h2 id="_7">アセットの表示</h2>
+<ol>
+<li>
+<p><strong>[データ カタログ]</strong> に移動し検索ボックスに <code>*</code>（アスタリスク）を入力しEnterを押してワイルドカード検索を実行します。</p>
+<p><img alt="" src="../images/module02b/2023-11-16-19-05-09.png" /></p>
+</li>
+</ol>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.81fa17fe.min.js"></script>
+      
+    
+  </body>
+</html>

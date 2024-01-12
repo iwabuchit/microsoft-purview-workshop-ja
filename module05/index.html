@@ -1,0 +1,1014 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../module04/">
+      
+      
+        <link rel="next" href="../module06/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
+    
+    
+      
+        <title>05. 分類 - Microsoft Purview Workshop JP</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans JP";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-DHNW06J3T4"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-DHNW06J3T4",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-DHNW06J3T4",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-05-" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Microsoft Purview Workshop JP" class="md-header__button md-logo" aria-label="Microsoft Purview Workshop JP" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Microsoft Purview Workshop JP
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              05. 分類
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_3" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_3">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Microsoft Purview Workshop JP" class="md-nav__button md-logo" aria-label="Microsoft Purview Workshop JP" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Microsoft Purview Workshop JP
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Learning Modules
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Learning Modules
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module00/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00. 環境のセットアップ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01. Purview Accountの作成
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module02a/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02A. データ資産の登録とスキャン (Azure Data Lake Storage Gen2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module02b/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02B. データ資産の登録とスキャン (Azure SQL Database)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03. アセットの検索と参照
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04. 用語集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    05. 分類
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    05. 分類
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+    <nav class="md-nav" aria-label="はじめに">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    📢 導入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    🤔 前提条件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    🎯 ゴール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    分類の作成
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    カスタム分類ルールの作成（正規表現）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    スキャン ルール セットの作成
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adls-gen2" class="md-nav__link">
+    ADLS Gen2アカウントへのデータ アップロード
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adls-gen2_1" class="md-nav__link">
+    ADLS Gen2アカウントのスキャン
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    分類による検索
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06. データ系列の可視化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07. データ資産の分析情報
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08. Azure Synapse Analyticsとの統合
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+    <nav class="md-nav" aria-label="はじめに">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    📢 導入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    🤔 前提条件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    🎯 ゴール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    分類の作成
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    カスタム分類ルールの作成（正規表現）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    スキャン ルール セットの作成
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adls-gen2" class="md-nav__link">
+    ADLS Gen2アカウントへのデータ アップロード
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adls-gen2_1" class="md-nav__link">
+    ADLS Gen2アカウントのスキャン
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    分類による検索
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="module-05-">Module 05 - 分類</h1>
+<h2 id="_1">はじめに</h2>
+<h3 id="_2">📢 導入</h3>
+<p>Microsoft Purviewには、データ資産に存在する可能性のある典型的なデータ タイプを表す多数のデフォルト分類が用意されています（例：電子メールアドレス、クレジットカード番号、パスポート番号など）。また、デフォルトの分類がニーズに合わない場合は、カスタム分類を作成することができます。</p>
+<h3 id="_3">🤔 前提条件</h3>
+<ul>
+<li>アクティブなサブスクリプションを持つAzureアカウント</li>
+<li>Azure Data Lake Storage Gen2 アカウント (<a href="../module00/">Module 00</a> を参照)</li>
+<li>Microsoft Purview アカウント (<a href="../module01/">Module 01</a> を参照)</li>
+</ul>
+<h3 id="_4">🎯 ゴール</h3>
+<ul>
+<li>カスタム分類の作成</li>
+<li>カスタム分類を資産に適用するスキャンの実行</li>
+</ul>
+<h2 id="_5">分類の作成</h2>
+<ol>
+<li>
+<p>Purview ガバナンス ポータルを開き<strong>[データマップ]</strong>＞<strong>[分類]</strong>に移動して<strong>[新規]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-12-00-33.png" /></p>
+</li>
+<li>
+<p>以下の値を<strong>[コピー]</strong>して適切なフィールドに貼り付け<strong>[OK]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-12-01-18.png" /></p>
+<ul>
+<li>名前
+<div class="highlight"><pre><span></span><code>Twitter Handle
+</code></pre></div></li>
+<li>説明
+<div class="highlight"><pre><span></span><code>TwitterのURLの末尾に表示されるユーザー名。
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>[カスタム]</strong>タブに移動してカスタム分類が作成されたことを確認します。</p>
+<p><img alt="" src="../images/module05/2024-01-11-12-01-43.png" /></p>
+</li>
+</ol>
+<h2 id="_6">カスタム分類ルールの作成（正規表現）</h2>
+<ol>
+<li>
+<p><strong>[データマップ]</strong>＞<strong>[分類ルール]</strong>に移動し<strong>[新規]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-12-02-19.png" /></p>
+</li>
+<li>
+<p>次の例に従って分類規則フィールドを設定し<strong>[続行]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-12-02-44.png" /></p>
+<ul>
+<li>名前
+<div class="highlight"><pre><span></span><code>twitter_handle
+</code></pre></div></li>
+<li>説明
+<div class="highlight"><pre><span></span><code>TwitterのURLの末尾に表示されるユーザー名。
+</code></pre></div></li>
+<li>分類名
+<div class="highlight"><pre><span></span><code>Twitter Handle
+</code></pre></div></li>
+<li>状態
+<div class="highlight"><pre><span></span><code>有効
+</code></pre></div></li>
+<li>種類
+<div class="highlight"><pre><span></span><code>Regular Expression
+</code></pre></div></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>分類ルールには2つのタイプがあります。正規表現は、実際のデータ名や列名に対してパターンマッチングを実行します。辞書ベースの分類ルールでは、CSVまたはTSVファイルを介してすべての可能な値のリストを提供できます。</p>
+</div>
+</li>
+<li>
+<p>twitter_handles.csvをローカルマシンにダウンロードします。<br />
+<strong>[参照]</strong>アイコンをクリックしダウンロードしたファイルを開きます。<br />
+<strong>[Handle]</strong>列に関連付けられているデータ パターンを選択し<strong>[パターンに追加]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-12-05-20.png" /></p>
+</li>
+<li>
+<p><strong>[データ パターン]</strong>のプラス記号（<code>+</code>）を<code>{5,15}</code>で置き換えて変更します。</p>
+<p><img alt="" src="../images/module05/2024-01-11-12-05-53.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>プラス記号 (<code>+</code>) は、前の項目に一致する 1 つ以上の文字を示します。これにより、無制限の数の英数字が許可されるため、誤検知が発生する可能性があります。Twitter ハンドルは 5 文字以上 15 文字以下である必要があります。<br />
+<code>{5,15}</code>を使用すると、前の項目が 5 回以上 15 回以下である場合にのみ条件に一致します。</p>
+</div>
+</li>
+<li>
+<p><strong>[列パターン]</strong>を変更することもできますが、この例ではデータ パターンにみを設定します。<br />
+<strong>[列パターン]</strong>の入力をクリアし<strong>[作成]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-12-06-19.png" /></p>
+</li>
+</ol>
+<h2 id="_7">スキャン ルール セットの作成</h2>
+<ol>
+<li>
+<p><strong>[データマップ]</strong>＞<strong>[スキャン ルール セット]</strong>に移動し<strong>[新規]</strong>をクリックします。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>スキャン ルール セットは、スコープ内のファイルの種類と分類ルールを決定します。カスタム ファイルの種類またはカスタム分類ルールをスキャンの一部として含める場合は、カスタム スキャン ルール セットを作成する必要があります。</p>
+</div>
+<p><img alt="" src="../images/module05/2024-01-11-14-02-58.png" /></p>
+</li>
+<li>
+<p><strong>[接続元の種類]</strong>をAzure Data Lake Storage Gen2に変更して以下の値を適切なフィールドに入力し<strong>[続行]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-14-03-19.png" /></p>
+<ul>
+<li>スキャン ルール セット名
+<div class="highlight"><pre><span></span><code>twitter_scan_rule_set
+</code></pre></div></li>
+<li>スキャン ルールの説明
+<div class="highlight"><pre><span></span><code>Parquetファイルを検出し、Twitterのハンドルを分類するためのカスタム スキャン ルールセット。
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>PARQUETを除く全てのファイルタイプの選択をクリアして<strong>[続行]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-14-03-38.png" /></p>
+</li>
+<li>
+<p>選択されているシステム ルールをクリアしtwitter_handleカスタム分類規則を選択し<strong>[続行]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-14-03-55.png" /></p>
+</li>
+<li>
+<p>除外パターンを入力せずに<strong>[作成]</strong>をクリックします。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>除外パターンは、スキャン中に除外する資産を Microsoft Purview に指示します。スキャン中に、Microsoft Purview は資産の URL をこれらの正規表現と比較します。上記の正規表現のいずれかに一致するすべてのアセットは、スキャン中に無視されます。</p>
+</div>
+<p><img alt="" src="../images/module05/2024-01-11-14-04-27.png" /></p>
+</li>
+</ol>
+<h2 id="adls-gen2">ADLS Gen2アカウントへのデータ アップロード</h2>
+<ol>
+<li>
+<p><a href="../files/twitter_handles.parquet">twitter_handles.parquet</a>をダウンロードします。
+Azure Storage ExplorerでAzure Data Lake Storage Gen2アカウントに移動し<strong>[Blob Containers]</strong>を展開してrawコンテナーを開きます。（存在しない場合は作成します。）</p>
+<p><img alt="" src="../images/module05/2024-01-11-14-05-31.png" /></p>
+</li>
+<li>
+<p><strong>[新しいフォルダー]</strong>ボタンをクリックしフォルダ名にTwitterと入力して<strong>[OK]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-14-05-48.png" /></p>
+</li>
+<li>
+<p>新しく作成したフォルダを右クリックし<strong>[開く]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-14-06-07.png" /></p>
+</li>
+<li>
+<p><strong>[アップロード]</strong>ボタンをクリックし<strong>[ファイルのアップロード]</strong>を選択します。</p>
+<p><img alt="" src="../images/module05/2024-01-11-14-06-27.png" /></p>
+</li>
+<li>
+<p>ダウンロードしたtwitter_handles.parquetを選択し<strong>[アップロード]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-14-06-50.png" /></p>
+</li>
+</ol>
+<h2 id="adls-gen2_1">ADLS Gen2アカウントのスキャン</h2>
+<ol>
+<li>
+<p><strong>[データマップ]</strong>＞<strong>[ソース]</strong>に移動しAzure Data Lake Storage Gen2タイル内の<strong>[新しいスキャン]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-15-48-43.png" /></p>
+</li>
+<li>
+<p><strong>[接続のテスト]</strong>をクリックして資格情報にアクセスできることを確認し<strong>[続行]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-15-56-01.png" /></p>
+</li>
+<li>
+<p>規定ではAzure Data Lake Storage Gen2アカウントが選択されスコープ内のすべてのパスがスキャン対象となります。スコープを縮小するためにルートの選択を解除しTwitterフォルダのみを選択し<strong>[続行]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-15-56-37.png" /></p>
+</li>
+<li>
+<p>カスタムスキャン ルール セットのスコープを検証するには<strong>[詳細の表示]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-15-57-15.png" /></p>
+</li>
+<li>
+<p>カスタム スキャン ルール セットにPARQUETファイル タイプとカスタム分類規則twitter_handle が含まれていることを確認し<strong>[OK]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-15-58-36.png" /></p>
+</li>
+<li>
+<p>カスタム スキャン ルール セットtwitter_scan_rule_set を選択し<strong>[続行]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-16-01-10.png" /></p>
+</li>
+<li>
+<p>スキャン トリガーを<strong>[一度だけ]</strong>に設定し<strong>[続行]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-15-58-51.png" /></p>
+</li>
+<li>
+<p><strong>[保存して実行]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-15-59-44.png" /></p>
+</li>
+<li>
+<p>スキャンの進行状況を表示するには<strong>[ソース]</strong>に移動し<strong>[Azure Data Lake Storage Gen2]</strong>タイルの<strong>[詳細の表示]</strong>をクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-16-01-37.png" /></p>
+</li>
+<li>
+<p><strong>[最新の情報に更新]</strong>を定期的にクリックしスキャンの状態が<strong>[完了]</strong>になるまで更新します。所要時間は約5～10分です。</p>
+<p><img alt="" src="../images/module05/2024-01-11-16-02-05.png" /></p>
+</li>
+</ol>
+<h2 id="_8">分類による検索</h2>
+<ol>
+<li>
+<p>スキャンが完了したら検索バーにアスタリスク（*）を入力しワイルドカード検索を実行します。</p>
+<p><img alt="" src="../images/module05/2024-01-11-16-14-38.png" /></p>
+</li>
+<li>
+<p>フィルタ パネル内の<strong>[分類]</strong>を<strong>[Twitter Handle]</strong>に設定して検索結果を絞り込みます。アセットの詳細を表示するにはtwitter_handles.parquetをクリックします。</p>
+<p><img alt="" src="../images/module05/2024-01-11-16-15-07.png" /></p>
+</li>
+<li>
+<p><strong>[概要]</strong>タブでスキーマ分類にTwitter Handleが含まれていることを確認します。分類された列を確認するには<strong>[スキーマ]</strong>タブに移動します。</p>
+<p><img alt="" src="../images/module05/2024-01-11-16-15-28.png" /></p>
+</li>
+<li>
+<p><strong>[スキーマ]</strong>タブではAccount Nameが分類された列であることが確認できます。</p>
+<p><img alt="" src="../images/module05/2024-01-11-16-15-47.png" /></p>
+</li>
+</ol>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.81fa17fe.min.js"></script>
+      
+    
+  </body>
+</html>
