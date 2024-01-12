@@ -18,6 +18,10 @@
     margin-right: 5px;
 }
 
+.md-typeset img {
+    border: solid 1px #999999;
+}
+
 body {
     counter-reset : h2;
 }

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Module 02A - &#x30c7;&#x30fc;&#x30bf;&#x8cc7;&#x7523;&#x306e;&#x767b;&#x9332;&#x3068;&#x30b9;&#x30ad;&#x30e3;&#x30f3;&lpar;Azure Data Lake Storage Gen2&rpar;</title>
-        <style>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Module 02A - &#x30c7;&#x30fc;&#x30bf;&#x8cc7;&#x7523;&#x306e;&#x767b;&#x9332;&#x3068;&#x30b9;&#x30ad;&#x30e3;&#x30f3;&lpar;Azure Data Lake Storage Gen2&rpar;</title>
+            <style>
 /* From extension vscode.github */
 /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
@@ -89,7 +89,7 @@ body.marp-vscode blockquote {
 }
 
 </style>
-        
+            
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
 <style>
@@ -111,9 +111,9 @@ body.marp-vscode blockquote {
 }
 </style>
         
-    </head>
-    <body class="vscode-body vscode-light">
-        <h1 id="module-02a---データ資産の登録とスキャンazure-data-lake-storage-gen2">Module 02A - データ資産の登録とスキャン(Azure Data Lake Storage Gen2)</h1>
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="module-02a---データ資産の登録とスキャンazure-data-lake-storage-gen2">Module 02A - データ資産の登録とスキャン(Azure Data Lake Storage Gen2)</h1>
 <h2 id="はじめに">はじめに</h2>
 <h3 id="-導入">📢 導入</h3>
 <p>データを検出し把握するために Microsoft Purview にデータ資産を登録するには、データ資産をソースとして登録してスキャン機能を利用できるようにする必要があります。スキャンにより Microsoft Purview は、完全修飾名、スキーマ、データ型などの技術的なメタデータを抽出し、元になるデータのサンプルを解析して分類を適用できます。このモジュールでは、データ ソースの登録とスキャン方法について説明します。</p>
@@ -136,27 +136,30 @@ body.marp-vscode blockquote {
 <ol>
 <li>
 <p>ADLS Gen2 <code>pvlab{RandomID}adls</code> アカウントへ移動し、ナビゲーションメニューから <strong>[アクセス制御(IAM)]</strong> を選択します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-15-35-31.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-15-35-31.png" alt=""></p>
 </li>
 <li>
 <p><strong>[ロールの割当の追加]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-15-36-47.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-15-36-47.png" alt=""></p>
 </li>
 <li>
 <p><strong>[ストレージ BLOB データ閲覧者]</strong> を検索、選択し <strong>[次へ]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-15-38-01.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-15-38-01.png" alt=""></p>
 </li>
 <li>
 <p><strong>[メンバー]</strong> タブへ移動し <strong>[アクセスの割り当て先]</strong> で <strong>[マネージド ID]</strong> を選択し <strong>[＋メンバーを選択する]</strong> をクリックします。 <strong>[マネージドID]</strong> ドロップダウン メニューから <strong>[Purview アカウント]</strong> を選択し作成したPurviewアカウント（<code>pvlab-{randomId}-pv</code>）を選び <strong>[選択]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-15-42-01.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-15-42-01.png" alt=""></p>
 </li>
 <li>
 <p><strong>[レビューと割り当て]</strong> をクリックし、ロールの割り当てを実行します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-15-44-44.png" alt=""></p>
+ <!--
+ ![](./images/module02a/2023-11-16-15-44-44.png)
+ -->
+ <img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\images\module02a\2023-11-16-15-44-44.png" width="70%" />
 </li>
 <li>
 <p><strong>[ロールの割り当て]</strong> タブに移動し、 <strong>[スコープ]</strong> を <strong>[このリソース]</strong> に設定しPurviewマネージドIDに <strong>[ストレージ BLOB データ閲覧者]</strong> の役割が付与されていることを確認します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-15-46-00.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-15-46-00.png" alt=""></p>
 </li>
 </ol>
 <h2 id="adls-gen2へのデータ-アップロード">ADLS Gen2へのデータ アップロード</h2>
@@ -168,92 +171,92 @@ Azureストレージ エクスプローラーを起動します。
 </li>
 <li>
 <p>Bing コロナウィルス クエリセットのコピーをローカルマシンにダウンロードします。ダウンロードしたzipファイルを探し、ファイルを右クリックして <strong>[すべて展開...]</strong> を選択しコンテンツを解凍します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-15-57-29.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-15-57-29.png" alt=""></p>
 </li>
 <li>
 <p><strong>[展開]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-15-58-39.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-15-58-39.png" alt=""></p>
 </li>
 <li>
 <p>Azure ストレージ エクスプローラーを開き、サブスクリプションを展開して、ストレージアカウントを探します。 <strong>[Blob Containers]</strong> を右クリックし <strong>[BLOB コンテナーの作成]</strong> を選択しコンテナーを作成します。※ ここでは、作成するBLOBコンテナーの名前を「raw」とします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-15-59-39.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-15-59-39.png" alt=""></p>
 </li>
 <li>
 <p>コンテナーを選択した状態で <strong>[アップロード]</strong> をクリックし <strong>[フォルダのアップロード]</strong> を選択します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-16-01-12.png" alt=""></p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-16-02-39.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-16-01-12.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-16-02-39.png" alt=""></p>
 </li>
 <li>
 <p>解凍したBingCoronavirusQuerySetフォルダーを選択し <strong>[フォルダーの選択]</strong> をクリックします。</p>
 </li>
 <li>
 <p><strong>[アップロード]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-16-04-20.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-16-04-20.png" alt=""></p>
 </li>
 <li>
 <p>転送が完了したことを確認します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-16-05-18.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-16-05-18.png" alt=""></p>
 </li>
 </ol>
 <h2 id="コレクションの作成">コレクションの作成</h2>
 <ol>
 <li>
 <p><strong>[データ マップ]</strong> ＞ <strong>[コレクション]</strong> に移動して <strong>[＋新しいコレクション]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-16-07-02.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-16-07-02.png" alt=""></p>
 </li>
 <li>
 <p>コレクションに <strong>[表示名]</strong> （Contoso）を指定し <strong>[作成]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-16-08-07.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-16-08-07.png" alt=""></p>
 </li>
 </ol>
 <h2 id="ソースの登録adls-gen2">ソースの登録（ADLS Gen2）</h2>
 <ol>
 <li>
 <p><strong>[データ マップ]</strong> ＞ <strong>[ソース]</strong> に移動し <strong>[登録]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-16-10-15.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-16-10-15.png" alt=""></p>
 </li>
 <li>
 <p>Azure Data Lake Storage Gen2を選択し <strong>[続行]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-16-11-23.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-16-11-23.png" alt=""></p>
 </li>
 <li>
 <p><strong>[Azure サブスクリプション]</strong> 、 <strong>[ストレージ アカウント名]</strong> 、 <strong>[コレクション]</strong> の順に選択し <strong>[登録]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-16-16-03.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-16-16-03.png" alt=""></p>
 </li>
 </ol>
 <h2 id="マネージドidを利用したスキャン">マネージドIDを利用したスキャン</h2>
 <ol>
 <li>
 <p><strong>[データマップ]</strong> ＞ <strong>[ソース]</strong> に移動し <strong>[Azure Data Lake Storage Gen2]</strong> タイル内で <strong>[新しいスキャン]</strong> アイコンをクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-16-22-58.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-16-22-58.png" alt=""></p>
 </li>
 <li>
 <p><strong>[接続のテスト]</strong> をクリックしてMicrosoft Purview マネージドIDが適切なアクセス権を持っていることを確認します。接続に成功した場合は <strong>[続行]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-16-23-58.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-16-23-58.png" alt=""></p>
 </li>
 <li>
 <p>階層を展開してスキャン スコープ内に含まれるアセットを確認し <strong>[続行]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-16-24-45.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-16-24-45.png" alt=""></p>
 </li>
 <li>
 <p>システム規定のスキャン ルール セットを選択し <strong>[続行]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-16-25-36.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-16-25-36.png" alt=""></p>
 </li>
 <li>
 <p><strong>[一度だけ]</strong> を選択し <strong>[続行]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-16-26-19.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-16-26-19.png" alt=""></p>
 </li>
 <li>
 <p><strong>[保存して続行]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-16-26-56.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-16-26-56.png" alt=""></p>
 </li>
 <li>
 <p>スキャン実行の進行状況を監視するには <strong>[詳細の表示]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-16-27-27.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-16-27-27.png" alt=""></p>
 </li>
 <li>
 <p><strong>[最新の情報に更新]</strong> をクリックしてスキャンの状態を定期的に更新します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-16-28-28.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-16-28-28.png" alt=""></p>
 <p>!!! Info
 スキャンの完了まで約6分程度かかります。</p>
 </li>
@@ -262,16 +265,16 @@ Azureストレージ エクスプローラーを起動します。
 <ol>
 <li>
 <p><strong>[データ カタログ]</strong> に移動し検索ボックスにアスタリスク（*）を入力し ++enter++ を押してワイルドカード検索を実行します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-17-00-18.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-17-00-18.png" alt=""></p>
 </li>
 <li>
 <p>検索結果内にアセットのリストが表示されます。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02a\2023-11-16-17-01-24.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02a\2023-11-16-17-01-24.png" alt=""></p>
 </li>
 </ol>
 
-        
-        <script async type="text/javascript">
+            
+            <script async type="text/javascript">
 /* From extension marp-team.marp-vscode */
 (()=>{var U=Object.defineProperty;var d=($,E)=>U($,"name",{value:E,configurable:!0});(()=>{var $={676:(w,b,g)=>{w.exports=g(185)},185:(w,b)=>{"use strict";var g;g={value:!0};const x={h1:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:()=>HTMLSpanElement},pre:{proto:()=>HTMLElement,style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},k="data-marp-auto-scaling-wrapper",u="data-marp-auto-scaling-svg",c="data-marp-auto-scaling-container",T=class T extends HTMLElement{constructor(){super(),this.svgPreserveAspectRatio="xMinYMid meet";const s=d(i=>([n])=>{const{width:e,height:t}=n.contentRect;this[i]={width:e,height:t},this.updateSVGRect()},"t");this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(s("containerSize")),this.wrapperObserver=new ResizeObserver((...i)=>{s("wrapperSize")(...i),this.flushSvgDisplay()})}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){var s,i,n,e,t;this.shadowRoot.innerHTML=`
 <style>
@@ -287,5 +290,5 @@ Azureストレージ エクスプローラーを起動します。
 
 </script>
 
-    </body>
-    </html>
+        </body>
+        </html>
