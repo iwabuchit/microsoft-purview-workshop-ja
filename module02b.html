@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Module 02B - &#x30c7;&#x30fc;&#x30bf;&#x8cc7;&#x7523;&#x306e;&#x767b;&#x9332;&#x3068;&#x30b9;&#x30ad;&#x30e3;&#x30f3;&lpar;Azure SQL Database&rpar;</title>
-        <style>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Module 02B - &#x30c7;&#x30fc;&#x30bf;&#x8cc7;&#x7523;&#x306e;&#x767b;&#x9332;&#x3068;&#x30b9;&#x30ad;&#x30e3;&#x30f3;&lpar;Azure SQL Database&rpar;</title>
+            <style>
 /* From extension vscode.github */
 /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
@@ -89,7 +89,7 @@ body.marp-vscode blockquote {
 }
 
 </style>
-        
+            
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
 <style>
@@ -110,10 +110,106 @@ body.marp-vscode blockquote {
     pointer-events: none;
 }
 </style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
         
-    </head>
-    <body class="vscode-body vscode-light">
-        <h1 id="module-02b---データ資産の登録とスキャンazure-sql-database">Module 02B - データ資産の登録とスキャン(Azure SQL Database)</h1>
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="module-02b---データ資産の登録とスキャンazure-sql-database">Module 02B - データ資産の登録とスキャン(Azure SQL Database)</h1>
 <h2 id="はじめに">はじめに</h2>
 <h3 id="-導入">📢 導入</h3>
 <p>データを検出し把握するために Microsoft Purview にデータ資産を登録するには、データ資産をソースとして登録してスキャン機能を利用できるようにする必要があります。スキャンにより Microsoft Purview は、完全修飾名、スキーマ、データ型などの技術的なメタデータを抽出し、元になるデータのサンプルを解析して分類を適用できます。このモジュールでは、データ ソースの登録とスキャン方法について説明します。</p>
@@ -133,23 +229,23 @@ Azure Key Vault は、シークレットの安全なストアを提供するク�
 <ol>
 <li>
 <p>Azure Key Vaultリソースに移動し <strong>[アクセス ポリシー]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-05-59.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-05-59.png" alt=""></p>
 </li>
 <li>
 <p><strong>[＋ 作成]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-06-51.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-06-51.png" alt=""></p>
 </li>
 <li>
 <p><strong>[シークレットのアクセス許可]</strong> で <strong>[すべて選択]</strong> を選択し <strong>[次へ]</strong> クリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-07-55.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-07-55.png" alt=""></p>
 </li>
 <li>
 <p>自分の <strong>[アカウント名]</strong> を検索し、検索結果から自分のアカウントを選択し <strong>[確認および作成]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-10-54.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-10-54.png" alt=""></p>
 </li>
 <li>
 <p>選択した内容を確認し <strong>[作成]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-11-42.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-11-42.png" alt=""></p>
 </li>
 </ol>
 <h2 id="アクセスポリシーの設定-2">アクセスポリシーの設定 #2</h2>
@@ -158,30 +254,30 @@ Azure Key Vault は、シークレットの安全なストアを提供するク�
 <ol>
 <li>
 <p><strong>[アクセス ポリシー]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-16-10.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-16-10.png" alt=""></p>
 </li>
 <li>
 <p><strong>[＋作成]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-25-37.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-25-37.png" alt=""></p>
 </li>
 <li>
 <p><strong>[シークレットのアクセス許可]</strong> で <strong>[取得]</strong> と <strong>[一覧]</strong> を選択し <strong>[次へ]</strong> クリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-27-16.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-27-16.png" alt=""></p>
 </li>
 <li>
 <p>Microsoft Purviewアカウントの名前（例: <code>pvlab-{randomId}-pv</code>）を検索し、アカウントを選択して <strong>[確認および作成]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-29-24.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-29-24.png" alt=""></p>
 </li>
 <li>
 <p>選択内容を確認し <strong>[作成]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-30-20.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-30-20.png" alt=""></p>
 </li>
 </ol>
 <h2 id="シークレットの作成">シークレットの作成</h2>
 <ol>
 <li>
 <p><strong>[シークレット]</strong> に移動し <strong>[＋ 生成/インポート]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-32-35.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-32-35.png" alt=""></p>
 </li>
 <li>
 <p><strong>[名前]</strong> と <strong>[値]</strong> に次の値を入力して <strong>[作成]</strong> をクリックします。</p>
@@ -195,32 +291,32 @@ Azure Key Vault は、シークレットの安全なストアを提供するク�
 </ul>
 <pre><code>sqlPassword!
 </code></pre>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-34-45.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-34-45.png" alt=""></p>
 </li>
 </ol>
 <h2 id="資格情報をmicrosoft-purviewに追加する">資格情報をMicrosoft Purviewに追加する</h2>
 <ol>
 <li>
 <p><strong>[Purview ガバナンス ポータル]</strong> から <strong>[管理]</strong> ＞ <strong>[資格情報]</strong> に移動し <strong>[Key Vault接続の管理]</strong> へ移動します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-36-33.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-36-33.png" alt=""></p>
 </li>
 <li>
 <p><strong>[新規作成]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-37-23.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-37-23.png" alt=""></p>
 </li>
 <li>
 <p>Key Vaultの接続名を<code>myKeyVault</code>と設定、適切なサブスクリプションとKey Vault名を選択して <strong>[作成]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-39-24.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-39-24.png" alt=""></p>
 </li>
 <li>
 <p><strong>[閉じる]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-40-47.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-40-47.png" alt=""></p>
 <p>!!! Note
 アクセス権の付与の確認画面が表示された場合は <strong>[確認]</strong> をクリックしてください。</p>
 </li>
 <li>
 <p><strong>[資格情報]</strong> で <strong>[＋ 新規]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-43-38.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-43-38.png" alt=""></p>
 </li>
 <li>
 <p>認証方法を<code>SQL 認証</code>に設定しKey Vault接続を<code>myKeyVault</code>に設定します。それぞれのフィールドに以下の値を入力して <strong>[作成]</strong> をクリックします。</p>
@@ -239,71 +335,79 @@ Azure Key Vault は、シークレットの安全なストアを提供するク�
 </ul>
 <pre><code>sql-secret
 </code></pre>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-45-55.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-45-55.png" alt=""></p>
 </li>
 </ol>
 <h2 id="ソースの登録azure-sql-database">ソースの登録（Azure SQL Database）</h2>
 <ol>
 <li>
 <p><strong>[データ マップ]</strong> ＞ <strong>[データ ソース]</strong> に移動し <strong>[登録]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-46-58.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-46-58.png" alt=""></p>
 </li>
 <li>
 <p><strong>[Azure]</strong> タブへ移動し <strong>[Azure SQL Database]</strong> を選択し <strong>[続行]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-48-05.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-48-05.png" alt=""></p>
 </li>
 <li>
 <p><strong>[Azure サブスクリプション]</strong> 、<strong>[サーバー名]</strong>、<strong>[コレクション]</strong> の順に選択し <strong>[登録]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-50-03.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-50-03.png" alt=""></p>
 </li>
 </ol>
 <h2 id="登録した資格情報を利用したスキャン">登録した資格情報を利用したスキャン</h2>
 <ol>
 <li>
 <p><strong>[データマップ]</strong> ＞ <strong>[データ ソース]</strong> に移動し <strong>[Azure SQL Database]</strong> タイル内で <strong>[新しいスキャン]</strong> アイコンをクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-56-49.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-56-49.png" alt=""></p>
 </li>
 <li>
 <p><strong>[データベース]</strong> と <strong>[資格情報]</strong> を選択し <strong>[接続のテスト]</strong> をクリックします。接続が成功したら <strong>[続行]</strong> をクリックします。</p>
 <p>!!! Warning
 ServerlessタイプのSQL Databaseを選択しているため、DB作成から時間が経過しているとDBが停止しており、テストに失敗する場合があります。その場合は、再度接続テストをお試しください。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-58-37.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-58-37.png" alt=""></p>
 </li>
 <li>
 <p><strong>[続行]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-18-59-29.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-18-59-29.png" alt=""></p>
 </li>
 <li>
 <p><strong>[続行]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-19-00-10.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-19-00-10.png" alt=""></p>
 </li>
 <li>
 <p><strong>[一度だけ]</strong> を選択し <strong>[続行]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-19-00-54.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-19-00-54.png" alt=""></p>
 </li>
 <li>
 <p><strong>[保存して実行]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-19-01-33.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-19-01-33.png" alt=""></p>
 </li>
 <li>
 <p>スキャンの進行状況を監視するには <strong>[詳細の表示]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-19-02-07.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-19-02-07.png" alt=""></p>
 </li>
 <li>
 <p><strong>[最新の情報に更新]</strong> をクリックしてスキャンの状態を定期的に更新します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-19-03-30.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-19-03-30.png" alt=""></p>
 </li>
 </ol>
 <h2 id="アセットの表示">アセットの表示</h2>
 <ol>
 <li>
 <p><strong>[データ カタログ]</strong> に移動し検索ボックスに <code>*</code>（アスタリスク）を入力しEnterを押してワイルドカード検索を実行します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module02b\2023-11-16-19-05-09.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module02b\2023-11-16-19-05-09.png" alt=""></p>
 </li>
 </ol>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/ja-jp/purview/concept-scans-and-ingestion">Microsoft Purview でのスキャンとインジェスト</a></li>
+<li><a href="https://learn.microsoft.com/ja-jp/purview/scan-data-sources">Microsoft Purview でデータ ソースをスキャンする</a></li>
+<li><a href="https://learn.microsoft.com/ja-jp/purview/how-to-monitor-data-map-population">Microsoft Purview でデータ マップの作成を監視する</a></li>
+<li><a href="https://learn.microsoft.com/ja-jp/purview/register-scan-adls-gen2?tabs=MI">Microsoft Purview でAzure Data Lake Storageに接続する</a></li>
+<li><a href="https://learn.microsoft.com/ja-jp/purview/register-scan-azure-sql-database?tabs=sql-authentication">Microsoft Purview でデータベースAzure SQL検出して管理する</a></li>
+</ul>
 
-        
-        <script async type="text/javascript">
+            
+            <script async type="text/javascript">
 /* From extension marp-team.marp-vscode */
 (()=>{var U=Object.defineProperty;var d=($,E)=>U($,"name",{value:E,configurable:!0});(()=>{var $={676:(w,b,g)=>{w.exports=g(185)},185:(w,b)=>{"use strict";var g;g={value:!0};const x={h1:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:()=>HTMLSpanElement},pre:{proto:()=>HTMLElement,style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},k="data-marp-auto-scaling-wrapper",u="data-marp-auto-scaling-svg",c="data-marp-auto-scaling-container",T=class T extends HTMLElement{constructor(){super(),this.svgPreserveAspectRatio="xMinYMid meet";const s=d(i=>([n])=>{const{width:e,height:t}=n.contentRect;this[i]={width:e,height:t},this.updateSVGRect()},"t");this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(s("containerSize")),this.wrapperObserver=new ResizeObserver((...i)=>{s("wrapperSize")(...i),this.flushSvgDisplay()})}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){var s,i,n,e,t;this.shadowRoot.innerHTML=`
 <style>
@@ -319,5 +423,5 @@ ServerlessタイプのSQL Databaseを選択しているため、DB作成から�
 
 </script>
 
-    </body>
-    </html>
+        </body>
+        </html>

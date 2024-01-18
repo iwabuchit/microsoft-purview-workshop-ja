@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Module 03 - &#x30a2;&#x30bb;&#x30c3;&#x30c8;&#x306e;&#x691c;&#x7d22;&#x3068;&#x53c2;&#x7167;</title>
-        <style>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Module 03 - &#x30a2;&#x30bb;&#x30c3;&#x30c8;&#x306e;&#x691c;&#x7d22;&#x3068;&#x53c2;&#x7167;</title>
+            <style>
 /* From extension vscode.github */
 /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
@@ -89,7 +89,7 @@ body.marp-vscode blockquote {
 }
 
 </style>
-        
+            
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
 <style>
@@ -110,10 +110,106 @@ body.marp-vscode blockquote {
     pointer-events: none;
 }
 </style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
         
-    </head>
-    <body class="vscode-body vscode-light">
-        <h1 id="module-03---アセットの検索と参照">Module 03 - アセットの検索と参照</h1>
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="module-03---アセットの検索と参照">Module 03 - アセットの検索と参照</h1>
 <h2 id="はじめに">はじめに</h2>
 <h3 id="-導入">📢 導入</h3>
 <p>ソースが登録されスキャンされると、データカタログに実際のオブジェクト（Azure SQL Database のテーブルや Power BI のレポートなど）を表すアセットが追加されます。</p>
@@ -135,11 +231,11 @@ body.marp-vscode blockquote {
 <ol>
 <li>
 <p>Purview ガバナンス ポータル を開き**[データカタログ]**画面からアスタリスク<code>*</code>を検索バーに入力し++enter++を押します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-13-44-05.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module03\2024-01-10-13-44-05.png" alt=""></p>
 </li>
 <li>
 <p>**[分類]<strong>で検索結果を</strong>[Country/Region]**でフィルターしアセット名<code>QueriesByState</code>をクリックして詳細を表示します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-13-47-24.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module03\2024-01-10-13-47-24.png" alt=""></p>
 <p>!!! Note
 Purview ガバナンス ポータルは既定のユーザーエクスペリエンスとして提供されていますが、顧客やパートナーはMicrosoft Purview REST APIを使用して基盤となるプラットフォームとインターフェースできます。プラットフォームがオープンであるため、Microsoft Purviewとカスタムユーザーインターフェースを統合したり、プログラムで読み取り/書き込み操作を実行したりすることが可能です。</p>
 </li>
@@ -148,17 +244,17 @@ Purview ガバナンス ポータルは既定のユーザーエクスペリエ�
 <ol>
 <li>
 <p>**[編集]**をクリックしてアセットの詳細を変更します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-13-49-01.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module03\2024-01-10-13-49-01.png" alt=""></p>
 </li>
 <li>
 <p>以下のサンプルテキストを**[資産の説明]**に貼り付けます。</p>
 <pre><code>This dataset was curated from the Bing search logs (desktop users only) over the period of Jan 1st, 2020 – (Current Month - 1). Only searches that were issued many times by multiple users were included. The dataset includes queries from all over the world that had an intent related to the Coronavirus or Covid-19. In some cases this intent is explicit in the query itself (e.g., “Coronavirus updates Seattle”), in other cases it is implicit , e.g. “Shelter in place”
 </code></pre>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-13-50-43.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module03\2024-01-10-13-50-43.png" alt=""></p>
 </li>
 <li>
 <p>ドロップダウン メニューから**[分類]**に<code>World Cities</code>を割り当てます。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-13-59-32.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module03\2024-01-10-13-59-32.png" alt=""></p>
 </li>
 <li>
 <p>**[スキーマ]<strong>タブに移動しサンプルテキストで各列の</strong>[資産の説明]**を更新します。</p>
@@ -176,11 +272,11 @@ Purview ガバナンス ポータルは既定のユーザーエクスペリエ�
 <li>PopularityScore
 <code>      Value between 1 and 100 inclusive. 1 indicates least popular query on the day/State/Country with Coronavirus intent, and 100 indicates the most popular query for the same geography on the same day.      </code></li>
 </ul>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-01-26.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module03\2024-01-10-14-01-26.png" alt=""></p>
 </li>
 <li>
 <p>**[連絡先]<strong>タブに移動し、組織内のユーザを</strong>[エキスパート]<strong>と</strong>[所有者]<strong>に設定し</strong>[保存]**クリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-03-27.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module03\2024-01-10-14-03-27.png" alt=""></p>
 <p>!!! Note
 アセットは、次の 2 種類の連絡先に関連付けることができます。<br>
 - エキスパート: 多くの場合、ビジネスプロセスまたは対象分野の専門家です。<br>
@@ -189,7 +285,7 @@ Purview ガバナンス ポータルは既定のユーザーエクスペリエ�
 </li>
 <li>
 <p>同じパス内の他のアセットを表示するには**[関連]**タブに移動します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-04-22.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module03\2024-01-10-14-04-22.png" alt=""></p>
 </li>
 </ol>
 <h2 id="アセットの参照">アセットの参照</h2>
@@ -197,19 +293,19 @@ Purview ガバナンス ポータルは既定のユーザーエクスペリエ�
 <ol>
 <li>
 <p>**[データ カタログ]<strong>画面から</strong>[参照]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-10-25.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module03\2024-01-10-14-10-25.png" alt=""></p>
 </li>
 <li>
 <p>**[ソースの種類別]**タブに切り替えて<code>Azure Data Lake Storage Gen2</code>を選択します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-10-53.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module03\2024-01-10-14-10-53.png" alt=""></p>
 </li>
 <li>
 <p>アカウント<code>pvlab{randomId}adls</code>を選択します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-11-12.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module03\2024-01-10-14-11-12.png" alt=""></p>
 </li>
 <li>
 <p>コンテナー<code>raw</code>を選択します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-11-33.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module03\2024-01-10-14-11-33.png" alt=""></p>
 </li>
 </ol>
 <h2 id="一括編集">一括編集</h2>
@@ -217,18 +313,18 @@ Purview ガバナンス ポータルは既定のユーザーエクスペリエ�
 <ol>
 <li>
 <p>**[データカタログ]**画面からアスタリスク<code>*</code>を検索バーに入力し++enter++を押します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-21-25.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module03\2024-01-10-14-21-25.png" alt=""></p>
 </li>
 <li>
 <p>フィルター内の資産の種類から**[データ]**を選択します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-22-41.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module03\2024-01-10-14-22-41.png" alt=""></p>
  <!--
  <img src="http://127.0.0.1:8000/images/module03/2024-01-10-14-22-41.png" width="60%" />
  -->
 </li>
 <li>
 <p>**[ファイル]<strong>と</strong>[表]<strong>でフィルターをして次の5つの項目を選択し</strong>[選択項目の表示]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-14-25-38.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module03\2024-01-10-14-25-38.png" alt=""></p>
 <ul>
 <li>QueriesByState</li>
 <li>Address</li>
@@ -239,20 +335,24 @@ Purview ガバナンス ポータルは既定のユーザーエクスペリエ�
 </li>
 <li>
 <p>**[一括編集]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-15-07-04.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module03\2024-01-10-15-07-04.png" alt=""></p>
 </li>
 <li>
 <p>**[属性]<strong>を</strong>[所有者]<strong>に、</strong>[操作]<strong>を</strong>[追加]<strong>に設定し組織内の1人以上のユーザを選択して</strong>[適用]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-15-07-37.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module03\2024-01-10-15-07-37.png" alt=""></p>
 </li>
 <li>
 <p>**[すべての選択を解除して閉じる]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module03\2024-01-10-15-08-10.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module03\2024-01-10-15-08-10.png" alt=""></p>
 </li>
 </ol>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/ja-jp/purview/how-to-browse-catalog">Microsoft Purview データ カタログを参照する</a></li>
+</ul>
 
-        
-        <script async type="text/javascript">
+            
+            <script async type="text/javascript">
 /* From extension marp-team.marp-vscode */
 (()=>{var U=Object.defineProperty;var d=($,E)=>U($,"name",{value:E,configurable:!0});(()=>{var $={676:(w,b,g)=>{w.exports=g(185)},185:(w,b)=>{"use strict";var g;g={value:!0};const x={h1:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:()=>HTMLSpanElement},pre:{proto:()=>HTMLElement,style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},k="data-marp-auto-scaling-wrapper",u="data-marp-auto-scaling-svg",c="data-marp-auto-scaling-container",T=class T extends HTMLElement{constructor(){super(),this.svgPreserveAspectRatio="xMinYMid meet";const s=d(i=>([n])=>{const{width:e,height:t}=n.contentRect;this[i]={width:e,height:t},this.updateSVGRect()},"t");this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(s("containerSize")),this.wrapperObserver=new ResizeObserver((...i)=>{s("wrapperSize")(...i),this.flushSvgDisplay()})}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){var s,i,n,e,t;this.shadowRoot.innerHTML=`
 <style>
@@ -268,5 +368,5 @@ Purview ガバナンス ポータルは既定のユーザーエクスペリエ�
 
 </script>
 
-    </body>
-    </html>
+        </body>
+        </html>

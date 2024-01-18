@@ -110,6 +110,102 @@ body.marp-vscode blockquote {
     pointer-events: none;
 }
 </style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
         
         </head>
         <body class="vscode-body vscode-light">
@@ -138,17 +234,17 @@ body.marp-vscode blockquote {
 次に、<strong>[管理]</strong> &gt; <strong>[Data Factory]</strong> &gt; **[新規]**をクリックします。</p>
 <p>!!! Note
 Data Factory 接続を表示/追加/削除するには、ルート コレクションに対するコレクション管理者ロールが割り当てられている必要があります。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-18-48-32.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-18-48-32.png" alt=""></p>
 </li>
 <li>
 <p>ドロップ ダウンメニューより、Azure Data Factory インスタンスを選択し、**[OK]**をクリックします。</p>
 <p>!!! Note
 Microsoft Purview は、複数の Azure Data Factory に接続できますが、Azure Data Factory アカウントは、1 つの Microsoft Purview アカウントにしか接続できません。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-18-48-58.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-18-48-58.png" alt=""></p>
 </li>
 <li>
 <p>Data Factory 接続が正しく作られたことを確認します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-18-49-29.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-18-49-29.png" alt=""></p>
 </li>
 <li>
 <p><strong>[データ マップ]</strong> &gt; <strong>[コレクション]</strong> &gt; <strong>[YOUR_ROOT_COLLECTION]</strong> &gt; <strong>[ロールの割り当て]</strong>
@@ -156,78 +252,78 @@ Microsoft Purview は、複数の Azure Data Factory に接続できますが、
 <p>!!! Note
 Azure Data Factory の接続を作成すると、Azure Data Factory のマネージド ID がデータ キューレーター ロールに追加されます。
 これにより、Azure Data Factory は、パイプラインの実行中にリネージを Microsoft Purview にプッシュすることが可能になります。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-18-54-53.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-18-54-53.png" alt=""></p>
 </li>
 </ol>
 <h2 id="azure-data-factory-を使ったデータのコピー">Azure Data Factory を使ったデータのコピー</h2>
 <ol>
 <li>
 <p>Azure ポータル画面より、データ ファクトリに進み**[Azure Data Factory Studio]**を起動します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-18-50-50.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-18-50-50.png" alt=""></p>
 </li>
 <li>
 <p>Azure Data Factory Studio を開き、**[取り込み]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-18-51-18.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-18-51-18.png" alt=""></p>
 </li>
 <li>
 <p>**[組み込みコピー タスク]<strong>を選択し</strong>[次へ]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-18-57-31.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-18-57-31.png" alt=""></p>
 </li>
 <li>
 <p>**[ソースの種類]<strong>で</strong>[Azure Data Lake Storage Gen2]<strong>を選択し、</strong>[新しい接続]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-18-57-50.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-18-57-50.png" alt=""></p>
 </li>
 <li>
 <p>**[Azure サブスクリプション]<strong>で現在ログインしているサブスクリプションを選択、</strong>[ストレージ アカウント名]<strong>に</strong>[e.g. pvlab{randomId}adls]<strong>を選択します。次に</strong>[テスト接続]<strong>が成功することを確認後</strong>[作成]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-18-58-11.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-18-58-11.png" alt=""></p>
 </li>
 <li>
 <p>ファイルまたはフォルダーの**[参照]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-18-58-48.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-18-58-48.png" alt=""></p>
 </li>
 <li>
 <p>**[raw/BingCoronavirusQuerySet/2020/]<strong>の順に辿り、</strong>[OK]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-18-59-20.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-18-59-20.png" alt=""></p>
 </li>
 <li>
 <p>続いてフォルダーのパスを確認し、**[次へ]<strong>をクリックします。
 <strong>[列区切り記号]<strong>を</strong>[タブ]</strong>、</strong>[先頭行をヘッダーとして]<strong>にチェックして</strong>[データのプレビュー]<strong>をクリックし、
 サンプル データを表示できたら、</strong>[次へ]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-18-59-44.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-18-59-44.png" alt=""></p>
 </li>
 <li>
 <p>ターゲットの種類：<strong>[Azure Data Lake Storage Gen2]</strong>
 接続：<strong>[e.g. AzureDataLakeStorage1]</strong>（前の手順で作成した接続先）を選択した後に、フォルダーのパスで**[参照]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-19-00-05.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-19-00-05.png" alt=""></p>
 </li>
 <li>
 <p>**[raw]<strong>をクリックし、下図の状態にして、</strong>[OK]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-19-00-27.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-19-00-27.png" alt=""></p>
 </li>
 <li>
 <p>フォルダーのパスが以下のようになっていることを確認します。
 ファイル名には**[2020_merged.parquet]<strong>と入力し、コピー動作に</strong>[ファイルのマージ]<strong>を選択して、</strong>[次へ]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-19-00-46.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-19-00-46.png" alt=""></p>
 </li>
 <li>
 <p>ファイル形式が**[Parquet 形式]** になっていることを確認して、**[次へ]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-19-01-27.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-19-01-27.png" alt=""></p>
 </li>
 <li>
 <p>そのまま**[次へ]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-19-01-42.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-19-01-42.png" alt=""></p>
 </li>
 <li>
 <p>概要画面にて**[次へ]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-19-02-01.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-19-02-01.png" alt=""></p>
 </li>
 <li>
 <p>配置が完了したら、**[終了]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-19-02-19.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-19-02-19.png" alt=""></p>
 </li>
 <li>
 <p>モニター画面にて、パイプラインの実行が成功していることを確認します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-19-02-40.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-19-02-40.png" alt=""></p>
 </li>
 </ol>
 <h2 id="データ系列lineageの可視化">データ系列(Lineage)の可視化</h2>
@@ -235,15 +331,15 @@ Azure Data Factory の接続を作成すると、Azure Data Factory のマネー
 <li>
 <p>Microsoft Purview ガバナンス ポータル のデータ カタログ画面にて、**[アセットの参照]**をクリックします。
 **[ソースの種類別]<strong>に切り替え、</strong>[Azure Data Factory]**を選択します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-19-03-16.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-19-03-16.png" alt=""></p>
 </li>
 <li>
 <p>Azure Data Factory インスタンスを選択、パイプラインの**[CopyPipeline_xxx]<strong>から、アクティビティ</strong>[Copy_xxx]**を選択します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-19-04-27.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-19-04-27.png" alt=""></p>
 </li>
 <li>
 <p>**[系列]**タブをクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-19-04-52.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-19-04-52.png" alt=""></p>
 </li>
 <li>
 <p>Azure Data Factory から Microsoft Purview に自動的に送られたデータの系列情報が確認できます。
@@ -252,9 +348,14 @@ Azure Data Factory の接続を作成すると、Azure Data Factory のマネー
 <strong>データセット</strong>： プロセスへの入力として提供されるデータセット（構造化または非構造化）。例えば、SQLテーブル、Azureブロブ、ファイル（.csvや.xmlなど）はすべてデータセットと見なされます。Purviewのリネージセクションでは、データセットは長方形のボックスで表されます。</p>
 <pre><code> **プロセス**： データセットに対して実行されるアクティビティや変換をプロセスと呼ぶ。例えば、ADFコピーアクティビティ、データ共有スナップショットなどです。Purviewのリネージセクションでは、プロセスは丸みを帯びたボックスで表されます。
 </code></pre>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module06\2024-01-11-19-05-17.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module06\2024-01-11-19-05-17.png" alt=""></p>
 </li>
 </ol>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/ja-jp/purview/concept-data-lineage">Microsoft Purview のデータ系列</a></li>
+<li><a href="https://learn.microsoft.com/ja-jp/purview/catalog-lineage-user-guide">系列ユーザー ガイドMicrosoft Purview データ カタログ</a></li>
+</ul>
 
             
             <script async type="text/javascript">

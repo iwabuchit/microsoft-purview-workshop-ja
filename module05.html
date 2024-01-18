@@ -110,6 +110,102 @@ body.marp-vscode blockquote {
     pointer-events: none;
 }
 </style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
         
         </head>
         <body class="vscode-body vscode-light">
@@ -132,11 +228,11 @@ body.marp-vscode blockquote {
 <ol>
 <li>
 <p>Purview ガバナンス ポータルを開き**[データマップ]<strong>＞</strong>[分類]<strong>に移動して</strong>[新規]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-12-00-33.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-12-00-33.png" alt=""></p>
 </li>
 <li>
 <p>以下の値を**[コピー]<strong>して適切なフィールドに貼り付け</strong>[OK]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-12-01-18.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-12-01-18.png" alt=""></p>
 <ul>
 <li>名前</li>
 </ul>
@@ -150,18 +246,18 @@ body.marp-vscode blockquote {
 </li>
 <li>
 <p>**[カスタム]**タブに移動してカスタム分類が作成されたことを確認します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-12-01-43.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-12-01-43.png" alt=""></p>
 </li>
 </ol>
 <h2 id="カスタム分類ルールの作成正規表現">カスタム分類ルールの作成（正規表現）</h2>
 <ol>
 <li>
 <p>**[データマップ]<strong>＞</strong>[分類ルール]<strong>に移動し</strong>[新規]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-12-02-19.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-12-02-19.png" alt=""></p>
 </li>
 <li>
 <p>次の例に従って分類規則フィールドを設定し**[続行]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-12-02-44.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-12-02-44.png" alt=""></p>
 <ul>
 <li>名前</li>
 </ul>
@@ -194,11 +290,11 @@ body.marp-vscode blockquote {
 <p>twitter_handles.csvをローカルマシンにダウンロードします。<br>
 **[参照]**アイコンをクリックしダウンロードしたファイルを開きます。<br>
 **[Handle]<strong>列に関連付けられているデータ パターンを選択し</strong>[パターンに追加]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-12-05-20.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-12-05-20.png" alt=""></p>
 </li>
 <li>
 <p>**[データ パターン]**のプラス記号（<code>+</code>）を<code>{5,15}</code>で置き換えて変更します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-12-05-53.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-12-05-53.png" alt=""></p>
 <p>!!! Note
 プラス記号 (<code>+</code>) は、前の項目に一致する 1 つ以上の文字を示します。これにより、無制限の数の英数字が許可されるため、誤検知が発生する可能性があります。Twitter ハンドルは 5 文字以上 15 文字以下である必要があります。<br>
 <code>{5,15}</code>を使用すると、前の項目が 5 回以上 15 回以下である場合にのみ条件に一致します。</p>
@@ -206,7 +302,7 @@ body.marp-vscode blockquote {
 <li>
 <p>**[列パターン]**を変更することもできますが、この例ではデータ パターンにみを設定します。<br>
 **[列パターン]<strong>の入力をクリアし</strong>[作成]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-12-06-19.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-12-06-19.png" alt=""></p>
 </li>
 </ol>
 <h2 id="スキャン-ルール-セットの作成">スキャン ルール セットの作成</h2>
@@ -215,11 +311,11 @@ body.marp-vscode blockquote {
 <p>**[データマップ]<strong>＞</strong>[スキャン ルール セット]<strong>に移動し</strong>[新規]**をクリックします。</p>
 <p>!!! Note
 スキャン ルール セットは、スコープ内のファイルの種類と分類ルールを決定します。カスタム ファイルの種類またはカスタム分類ルールをスキャンの一部として含める場合は、カスタム スキャン ルール セットを作成する必要があります。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-14-02-58.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-14-02-58.png" alt=""></p>
 </li>
 <li>
 <p>**[接続元の種類]<strong>をAzure Data Lake Storage Gen2に変更して以下の値を適切なフィールドに入力し</strong>[続行]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-14-03-19.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-14-03-19.png" alt=""></p>
 <ul>
 <li>スキャン ルール セット名</li>
 </ul>
@@ -233,17 +329,17 @@ body.marp-vscode blockquote {
 </li>
 <li>
 <p>PARQUETを除く全てのファイルタイプの選択をクリアして**[続行]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-14-03-38.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-14-03-38.png" alt=""></p>
 </li>
 <li>
 <p>選択されているシステム ルールをクリアしtwitter_handleカスタム分類規則を選択し**[続行]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-14-03-55.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-14-03-55.png" alt=""></p>
 </li>
 <li>
 <p>除外パターンを入力せずに**[作成]**をクリックします。</p>
 <p>!!! Note
 除外パターンは、スキャン中に除外する資産を Microsoft Purview に指示します。スキャン中に、Microsoft Purview は資産の URL をこれらの正規表現と比較します。上記の正規表現のいずれかに一致するすべてのアセットは、スキャン中に無視されます。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-14-04-27.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-14-04-27.png" alt=""></p>
 </li>
 </ol>
 <h2 id="adls-gen2アカウントへのデータ-アップロード">ADLS Gen2アカウントへのデータ アップロード</h2>
@@ -251,87 +347,93 @@ body.marp-vscode blockquote {
 <li>
 <p><a href="./files/twitter_handles.parquet">twitter_handles.parquet</a>をダウンロードします。
 Azure Storage ExplorerでAzure Data Lake Storage Gen2アカウントに移動し**[Blob Containers]**を展開してrawコンテナーを開きます。（存在しない場合は作成します。）</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-14-05-31.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-14-05-31.png" alt=""></p>
 </li>
 <li>
 <p>**[新しいフォルダー]<strong>ボタンをクリックしフォルダ名にTwitterと入力して</strong>[OK]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-14-05-48.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-14-05-48.png" alt=""></p>
 </li>
 <li>
 <p>新しく作成したフォルダを右クリックし**[開く]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-14-06-07.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-14-06-07.png" alt=""></p>
 </li>
 <li>
 <p>**[アップロード]<strong>ボタンをクリックし</strong>[ファイルのアップロード]**を選択します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-14-06-27.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-14-06-27.png" alt=""></p>
 </li>
 <li>
 <p>ダウンロードしたtwitter_handles.parquetを選択し**[アップロード]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-14-06-50.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-14-06-50.png" alt=""></p>
 </li>
 </ol>
 <h2 id="adls-gen2アカウントのスキャン">ADLS Gen2アカウントのスキャン</h2>
 <ol>
 <li>
 <p>**[データマップ]<strong>＞</strong>[ソース]<strong>に移動しAzure Data Lake Storage Gen2タイル内の</strong>[新しいスキャン]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-15-48-43.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-15-48-43.png" alt=""></p>
 </li>
 <li>
 <p>**[接続のテスト]<strong>をクリックして資格情報にアクセスできることを確認し</strong>[続行]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-15-56-01.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-15-56-01.png" alt=""></p>
 </li>
 <li>
 <p>規定ではAzure Data Lake Storage Gen2アカウントが選択されスコープ内のすべてのパスがスキャン対象となります。スコープを縮小するためにルートの選択を解除しTwitterフォルダのみを選択し**[続行]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-15-56-37.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-15-56-37.png" alt=""></p>
 </li>
 <li>
 <p>カスタムスキャン ルール セットのスコープを検証するには**[詳細の表示]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-15-57-15.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-15-57-15.png" alt=""></p>
 </li>
 <li>
 <p>カスタム スキャン ルール セットにPARQUETファイル タイプとカスタム分類規則twitter_handle が含まれていることを確認し**[OK]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-15-58-36.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-15-58-36.png" alt=""></p>
 </li>
 <li>
 <p>カスタム スキャン ルール セットtwitter_scan_rule_set を選択し**[続行]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-16-01-10.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-16-01-10.png" alt=""></p>
 </li>
 <li>
 <p>スキャン トリガーを**[一度だけ]<strong>に設定し</strong>[続行]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-15-58-51.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-15-58-51.png" alt=""></p>
 </li>
 <li>
 <p>**[保存して実行]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-15-59-44.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-15-59-44.png" alt=""></p>
 </li>
 <li>
 <p>スキャンの進行状況を表示するには**[ソース]<strong>に移動し</strong>[Azure Data Lake Storage Gen2]<strong>タイルの</strong>[詳細の表示]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-16-01-37.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-16-01-37.png" alt=""></p>
 </li>
 <li>
 <p>**[最新の情報に更新]<strong>を定期的にクリックしスキャンの状態が</strong>[完了]**になるまで更新します。所要時間は約5～10分です。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-16-02-05.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-16-02-05.png" alt=""></p>
 </li>
 </ol>
 <h2 id="分類による検索">分類による検索</h2>
 <ol>
 <li>
 <p>スキャンが完了したら検索バーにアスタリスク（*）を入力しワイルドカード検索を実行します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-16-14-38.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-16-14-38.png" alt=""></p>
 </li>
 <li>
 <p>フィルタ パネル内の**[分類]<strong>を</strong>[Twitter Handle]**に設定して検索結果を絞り込みます。アセットの詳細を表示するにはtwitter_handles.parquetをクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-16-15-07.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-16-15-07.png" alt=""></p>
 </li>
 <li>
 <p>**[概要]<strong>タブでスキーマ分類にTwitter Handleが含まれていることを確認します。分類された列を確認するには</strong>[スキーマ]**タブに移動します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-16-15-28.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-16-15-28.png" alt=""></p>
 </li>
 <li>
 <p>**[スキーマ]**タブではAccount Nameが分類された列であることが確認できます。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module05\2024-01-11-16-15-47.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module05\2024-01-11-16-15-47.png" alt=""></p>
 </li>
 </ol>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/ja-jp/purview/concept-classification">Microsoft Purview ガバナンス ポータルでのデータ分類</a></li>
+<li><a href="https://learn.microsoft.com/ja-jp/purview/apply-classifications">Microsoft Purview の資産に分類を自動的に適用する</a></li>
+<li><a href="https://learn.microsoft.com/ja-jp/purview/create-a-custom-classification-and-classification-rule">Microsoft Purview でのカスタム分類</a></li>
+</ul>
 
             
             <script async type="text/javascript">

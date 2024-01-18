@@ -110,6 +110,102 @@ body.marp-vscode blockquote {
     pointer-events: none;
 }
 </style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
         
         </head>
         <body class="vscode-body vscode-light">
@@ -137,64 +233,68 @@ body.marp-vscode blockquote {
 <p>Azure ポータルより、<strong>[ストレージ アカウント]</strong> &gt; <strong>[今回使用しているストレージ アカウント(e.g. pvlab{randomId}adls)]</strong> を選択し、<strong>[アクセス制御(IAM)]</strong> &gt; **[ロールの割り当ての追加]**をクリックします。</p>
 <p>!!! Note
 Azure Synapse Analytics と Microsoft Purview を統合することのメリットは、Microsoft Purview のデータ資産を Synapse ガバナンス ポータル から UI を変更することなく使用できる点です</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module08\2024-01-12-18-19-29.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module08\2024-01-12-18-19-29.png" alt=""></p>
 </li>
 <li>
 <p>**[ストレージ BLOB データ閲覧者]<strong>を検索、選択し</strong>[次へ]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module08\2024-01-12-18-20-01.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module08\2024-01-12-18-20-01.png" alt=""></p>
 </li>
 <li>
 <p>**[メンバー]**で **[＋メンバーを選択する]<strong>をクリックします。自身のユーザー名を入力して検索したらそれを改めて選択し</strong>[選択]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module08\2024-01-12-18-20-21.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module08\2024-01-12-18-20-21.png" alt=""></p>
 </li>
 <li>
 <p>メンバーを確認し**[レビューと割り当て]**を選択します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module08\2024-01-12-18-20-42.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module08\2024-01-12-18-20-42.png" alt=""></p>
 </li>
 <li>
 <p>Azure ポータルより**[Azure Synapse Analytics]<strong>を選択し</strong>[Synapse ガバナンス ポータル を開く]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module08\2024-01-12-18-21-35.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module08\2024-01-12-18-21-35.png" alt=""></p>
 </li>
 <li>
 <p><strong>[Manage]</strong> &gt; <strong>[Microsoft Purview]</strong> &gt; **[Purview アカウントに接続]**をクリックします</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module08\2024-01-12-18-21-58.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module08\2024-01-12-18-21-58.png" alt=""></p>
 </li>
 <li>
 <p>Purview アカウント名のドロップダウンより、**[e.g. pvlab{randomId}-pv]<strong>を選択し、</strong>[適用]**をクリックします</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module08\2024-01-12-18-35-16.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module08\2024-01-12-18-35-16.png" alt=""></p>
 </li>
 <li>
 <p>接続が確立されると、「正常に接続されました」という通知が来ます。**[Purview アカウント]**タブを開き、Purview アカウントが正しく追加されていることを確認します</p>
 <p>!!! Note
 Synapse ワークスペースが Microsoft Purview に接続する際に、Synapse のマネージド ID に対して必要な Purview 内のロールを自動的に追加します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module08\2024-01-12-18-36-08.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module08\2024-01-12-18-36-08.png" alt=""></p>
 </li>
 <li>
 <p>Synapse のマネージド ID が Purview の「データ キュレーター」ロールに追加されていることを確認します。<br>
 Purview スタジオから <strong>[データ マップ]</strong> &gt; <strong>[コレクション]</strong> &gt; <strong>[YOUR_ROOT_COLLECTION]</strong> &gt; **[ロールの割り当て]**タブの「データ キュレーター」を開いて確認します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module08\2024-01-12-18-36-33.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module08\2024-01-12-18-36-33.png" alt=""></p>
 </li>
 </ol>
 <h2 id="microsoft-purview-アカウントの検索">Microsoft Purview アカウントの検索</h2>
 <ol>
 <li>
 <p>Synapse ガバナンス ポータル の <strong>[データ]</strong> 画面の上部にある検索ウィンドウで「parquet」と入力して検索します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module08\2024-01-12-18-42-03.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module08\2024-01-12-18-42-03.png" alt=""></p>
 </li>
 <li>
 <p>検索された「twitter_handles.parquet」ファイルをクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module08\2024-01-12-18-42-21.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module08\2024-01-12-18-42-21.png" alt=""></p>
 </li>
 <li>
 <p>Synapse 用に準備された <strong>[接続]と</strong>[開発]**という特別なメニュー アイテムがあることが確認できます
 <strong>[開発]</strong> &gt; <strong>[New SQL script]</strong> &gt; <strong>[Select top 100]</strong> と辿っていきます。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module08\2024-01-12-18-42-40.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module08\2024-01-12-18-42-40.png" alt=""></p>
 </li>
 <li>
 <p>Synapse と Purview を連携させたことにより、**[実行]**をクリックすると、Microsoft Purview に登録されたデータ アセットを Synapse ガバナンス ポータル から透過的に検索できるようになることが確認できます。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module08\2024-01-12-18-43-03.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module08\2024-01-12-18-43-03.png" alt=""></p>
 </li>
 </ol>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/ja-jp/azure/synapse-analytics/catalog-and-governance/how-to-discover-connect-analyze-azure-purview">Microsoft Purview を使用した Synapse でのデータの検出、接続、探索</a></li>
+</ul>
 
             
             <script async type="text/javascript">

@@ -110,6 +110,102 @@ body.marp-vscode blockquote {
     pointer-events: none;
 }
 </style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
         
         </head>
         <body class="vscode-body vscode-light">
@@ -149,7 +245,7 @@ body.marp-vscode blockquote {
 <p>!!! Warning
 Data Estate Insightsへ情報が反映されるまでスキャン後3～8時間ほど必要になる場合があります。<br>
 <a href="https://docs.microsoft.com/ja-jp/azure/purview/asset-insights#understand-your-asset-inventory-in-data-estate-insights">データに関する Microsoft Purview のアセットの分析情報 - Microsoft Purview | Microsoft Docs</a></p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-11-54-20.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-11-54-20.png" alt=""></p>
 </li>
 <li>
 <p>データ スチュワードシップには、以下のようなメトリクスが表示されます。</p>
@@ -158,16 +254,16 @@ Data Estate Insightsへ情報が反映されるまでスキャン後3～8時間�
 <li>所有状況別の資産数</li>
 <li>月間アクティブユーザー数</li>
 </ul>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-11-54-50.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-11-54-50.png" alt=""></p>
 </li>
 <li>
 <p>データ スチュワードシップには、さらに以下のデータの可視化表現があります。通常、これらのタイルでは、インタラクティブなフィルタリングと、「詳細を表示」をクリックすることで詳細へのドリルダウンが可能になっています。</p>
 <p>データ資産の正常性
-<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-12-05-01.png" alt=""></p>
+<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-12-05-01.png" alt=""></p>
 <p>資産のキュレーション
-<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-15-52-46.png" alt=""></p>
+<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-15-52-46.png" alt=""></p>
 <p>傾向とギャップの分析
-<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-15-53-16.png" alt=""></p>
+<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-15-53-16.png" alt=""></p>
 </li>
 </ol>
 <h2 id="アセットから見た分析情報">アセットから見た分析情報</h2>
@@ -175,7 +271,7 @@ Data Estate Insightsへ情報が反映されるまでスキャン後3～8時間�
 <li>
 <p>Microsoft Purview ガバナンス ポータル を開きます。
 次に、<strong>[データ資産の分析情報]</strong> &gt; <strong>[アセット]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-12-06-35.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-12-06-35.png" alt=""></p>
 </li>
 <li>
 <p>アセットには、以下のようなメトリクスが表示されます。</p>
@@ -186,16 +282,16 @@ Data Estate Insightsへ情報が反映されるまでスキャン後3～8時間�
 <li>新規資産数（過去30日間）</li>
 <li>削除資産数（過去30日間）</li>
 </ul>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-12-07-41.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-12-07-41.png" alt=""></p>
 </li>
 <li>
 <p>アセットでは以下のグラフが表示されます。</p>
 <p>!!! Note
 <strong>[ソースの種類別のデータ資産]</strong> グラフのクイック フィルターを使用し、<strong>[詳細の表示]</strong> をクリックして詳細を掘り下げると、特定の種類のデータを含むソースをすばやく簡単に識別できます (たとえば、 <strong>[分類カテゴリ]</strong> フィルターを Personal に設定します。)</p>
 <p>コレクションごとのデータ資産/ソース種類別のデータ資産
-<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-12-08-38.png" alt=""></p>
+<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-12-08-38.png" alt=""></p>
 <p>ファイルベースのソースの種類
-<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-12-09-33.png" alt=""></p>
+<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-12-09-33.png" alt=""></p>
 </li>
 </ol>
 <h2 id="用語集から見た分析情報">用語集から見た分析情報</h2>
@@ -203,7 +299,7 @@ Data Estate Insightsへ情報が反映されるまでスキャン後3～8時間�
 <li>
 <p>Microsoft Purview ガバナンス ポータル を開きます。
 次に、<strong>[データ資産の分析情報]</strong> &gt; <strong>[用語集]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-15-56-10.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-15-56-10.png" alt=""></p>
 </li>
 <li>
 <p>用語集には、以下のメトリックが含まれます。</p>
@@ -212,14 +308,14 @@ Data Estate Insightsへ情報が反映されるまでスキャン後3～8時間�
 <li>資産と紐づかない承認済みの用語の合計</li>
 <li>資産と紐づく期限切れの用語の合計</li>
 </ul>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-15-56-34.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-15-56-34.png" alt=""></p>
 </li>
 <li>
 <p>アセットでは以下のグラフが表示されます。</p>
 <p>アセット数ごとの上位条件
-<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-15-56-59.png" alt=""></p>
+<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-15-56-59.png" alt=""></p>
 <p>用語は、定義、エキスパート、またはスチュワードが欠落している場合、不完全であると見なされます。1 つの用語にこれらの項目が複数欠落している場合は、「複数のアイテムが見つかりません」と表示されます。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-15-58-17.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-15-58-17.png" alt=""></p>
 </li>
 </ol>
 <h2 id="分類結果から見た分析情報">分類結果から見た分析情報</h2>
@@ -227,7 +323,7 @@ Data Estate Insightsへ情報が反映されるまでスキャン後3～8時間�
 <li>
 <p>Microsoft Purview ガバナンス ポータル を開きます。
 次に、<strong>[データ資産の分析情報]</strong> &gt; <strong>[分類]</strong> をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-15-58-44.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-15-58-44.png" alt=""></p>
 </li>
 <li>
 <p>分類には、以下のメトリックが含まれます。</p>
@@ -238,16 +334,16 @@ Data Estate Insightsへ情報が反映されるまでスキャン後3～8時間�
 <li>一意の分類の総数</li>
 <li>分類されたソースの総数</li>
 </ul>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-15-59-18.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-15-59-18.png" alt=""></p>
 </li>
 <li>
 <p>分類では以下のグラフが表示されます。</p>
 <p>分類されたデータを含む上位のデータ ソース (過去 30 日間)
-<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-15-59-46.png" alt=""></p>
+<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-15-59-46.png" alt=""></p>
 <p>上位の分類カテゴリ
-<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-16-00-44.png" alt=""></p>
+<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-16-00-44.png" alt=""></p>
 <p>上位の分類
-<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-16-01-08.png" alt=""></p>
+<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-16-01-08.png" alt=""></p>
 </li>
 </ol>
 <h2 id="秘密度ラベルから見た分析情報">秘密度ラベルから見た分析情報</h2>
@@ -257,7 +353,7 @@ Data Estate Insightsへ情報が反映されるまでスキャン後3～8時間�
 次に、<strong>[データ資産の分析情報]</strong> &gt; <strong>[秘密度ラベル]</strong> をクリックします。</p>
 <p>!!! Note
 秘密度ラベルを適用する Microsoft Purview の機能は、Microsoft Purview コンプライアンス ポータル内で制御されます。注: 秘密度ラベルを自動的に適用する利点を提供するアクティブな Microsoft 365 ライセンスが必要です。詳細については、「<a href="https://learn.microsoft.com/ja-jp/purview/how-to-automatically-label-your-content">Microsoft Purview データ マップ内のデータに秘密度ラベルを自動的に適用する方法</a>」を参照してください。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-16-01-36.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-16-01-36.png" alt=""></p>
 </li>
 <li>
 <p>秘密度ラベルには、以下のメトリックが含まれます。</p>
@@ -268,18 +364,22 @@ Data Estate Insightsへ情報が反映されるまでスキャン後3～8時間�
 <li>一意のラベルの合計数</li>
 <li>ラベル付きソースの総数</li>
 </ul>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-16-01-56.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-16-01-56.png" alt=""></p>
 </li>
 <li>
 <p>秘密度ラベルでは以下のグラフが表示されます。</p>
 <p>ラベル付きデータを含む上位のデータ ソース (過去 30 日間)
-<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-16-02-19.png" alt=""></p>
+<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-16-02-19.png" alt=""></p>
 <p>データ ソース全体に適用される上位のラベル
-<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-16-03-01.png" alt=""></p>
+<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-16-03-01.png" alt=""></p>
 <p>上位のラベル
-<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module07\2024-01-12-16-03-40.png" alt=""></p>
+<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module07\2024-01-12-16-03-40.png" alt=""></p>
 </li>
 </ol>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/ja-jp/purview/concept-insights">Microsoft Purview データ エステート分析情報 アプリケーションについて</a></li>
+</ul>
 
             
             <script async type="text/javascript">

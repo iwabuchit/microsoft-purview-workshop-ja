@@ -110,6 +110,102 @@ body.marp-vscode blockquote {
     pointer-events: none;
 }
 </style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
         
         </head>
         <body class="vscode-body vscode-light">
@@ -140,7 +236,7 @@ body.marp-vscode blockquote {
 <h3 id="ワークショップ環境">ワークショップ環境</h3>
 <p>本ワークショップで利用するリソースは本モジュール（Module 00）で作成します。
 Microsoft PurviewはModule 01で作成します。
-<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module00\2023-11-14-18-31-55.png" alt=""></p>
+<img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module00\2023-11-14-18-31-55.png" alt=""></p>
 <h3 id="利用ツールとサンプルデータ">利用ツールとサンプルデータ</h3>
 <p>本ワークショップでは以下のツールとサンプルデータを利用します。作業する端末に事前にダウンロード、インストールしておく事をおすすめします。</p>
 <ul>
@@ -148,18 +244,27 @@ Microsoft PurviewはModule 01で作成します。
 <p><a href="https://azure.microsoft.com/ja-jp/features/storage-explorer/">Azure Storage Explorer</a></p>
 </li>
 <li>
-<p><a href="https://github.com/tayganr/purviewlab/raw/main/assets/BingCoronavirusQuerySet.zip">Bing コロナウィルス クエリセット</a></p>
+<p><a href="./files/BingCoronavirusQuerySet.zip">Bing コロナウィルス クエリセット</a></p>
 </li>
 <li>
-<p><a href="https://github.com/tayganr/purviewlab/raw/main/assets/import-terms-sample.csv">用語集サンプル</a></p>
+<p><a href="./files/import-terms-sample.csv">用語集サンプル</a></p>
 </li>
 <li>
-<p><a href="https://github.com/tayganr/purviewlab/raw/main/assets/twitter_handles.csv">twitter_handles.csv</a></p>
+<p><a href="./files/twitter_handles.csv">twitter_handles.csv</a></p>
 </li>
 <li>
-<p><a href="https://github.com/tayganr/purviewlab/raw/main/assets/hippocorpus-u20220112.zip">Hippocorpus データセット</a></p>
+<p><a href="./files/hippocorpus-u20220112.zip">Hippocorpus データセット</a></p>
+</li>
+<li>
+<p><a href="./files/import_business_assets.csv">ビジネス資産サンプル</a></p>
 </li>
 </ul>
+<!--
+- [Bing コロナウィルス クエリセット](https://github.com/tayganr/purviewlab/raw/main/assets/BingCoronavirusQuerySet.zip)
+- [用語集サンプル](https://github.com/tayganr/purviewlab/raw/main/assets/import-terms-sample.csv)
+- [twitter_handles.csv](https://github.com/tayganr/purviewlab/raw/main/assets/twitter_handles.csv)
+- [Hippocorpus データセット](https://github.com/tayganr/purviewlab/raw/main/assets/hippocorpus-u20220112.zip)
+-->
 <!--
 オプション(Module 12 REST API を実施する場合に必要。)
 
@@ -170,26 +275,26 @@ Microsoft PurviewはModule 01で作成します。
 <ol>
 <li>
 <p>下記のアイコンを ++ctrl++ + クリックしてAzureポータルを開きます。</p>
-<p><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ftayganr%2Fpurviewlab%2Fmain%2Ftemplate%2Fazuredeploy.json"><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module00\deploytoazure.svg" alt="Deploy to Azure"></a></p>
+<p><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ftayganr%2Fpurviewlab%2Fmain%2Ftemplate%2Fazuredeploy.json"><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module00\deploytoazure.svg" alt="Deploy to Azure"></a></p>
 <p>もしくは、下記のURLからAzureポータルを開きます。
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ftayganr%2Fpurviewlab%2Fmain%2Ftemplate%2Fazuredeploy.json">https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ftayganr%2Fpurviewlab%2Fmain%2Ftemplate%2Fazuredeploy.json</a></p>
 </li>
 <li>
 <p>**[リソース グループ]<strong>フィールドの</strong>[新規作成]**をクリックし一意の名前を指定します。
 リージョンは東日本、東南アジアなどの<a href="https://azure.microsoft.com/ja-jp/explore/global-infrastructure/products-by-region/?products=purview&amp;regions=all">有効な場所</a>を指定します。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module00\2023-11-14-18-48-38.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module00\2023-11-14-18-48-38.png" alt=""></p>
 </li>
 <li>
 <p>検証が完了したら**[作成]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module00\2023-11-14-18-52-09.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module00\2023-11-14-18-52-09.png" alt=""></p>
 </li>
 <li>
 <p>デプロイが完了するまで約10分かかります。**[デプロイが完了しました]<strong>というメッセージが表示されたら</strong>[リソース グループに移動]**をクリックします。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module00\2023-11-14-19-05-41.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module00\2023-11-14-19-05-41.png" alt=""></p>
 </li>
 <li>
 <p>成功した場合はスクリーンショットのように15のリソースが表示されます。</p>
-<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja_mkdocs\docs\images\module00\2023-11-14-19-07-01.png" alt=""></p>
+<p><img src="file:///c:\Users\taiwabuc\OneDrive - Microsoft\work\workspace\purview-ws\microsoft-purview-workshop-ja\microsoft-purview-workshop-ja\docs\images\module00\2023-11-14-19-07-01.png" alt=""></p>
 </li>
 </ol>
 
